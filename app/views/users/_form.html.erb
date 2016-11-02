@@ -1,7 +1,33 @@
+<div class="text-field">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name, type: 'text' %>
+</div>
+
+<div class="text-field">
+  <%= form.label :last_name %>
+  <%= form.text_field :first_name, type: 'text' %>
+</div>
 
 <div class="text-field">
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email' %>
+</div>
+
+<!-- <div class="text-field">
+  <%= form.label :gender %>
+  <%= form.text_field :gender, type: 'text' %>
+</div>
+ -->
+
+<%= radio_button("user", "gender", "Male") %>
+<%= label_tag(:gender, "Male") %>
+<%= radio_button("user", "gender", "Female") %>
+<%= label_tag(:gender, "Female") %>
+
+
+<div class="text-field">
+  <%= form.label :age %>
+  <%= form.number_field :age, type: 'integer' %>
 </div>
 
 <div class="password-field">

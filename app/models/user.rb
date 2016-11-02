@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Clearance::User
+
 	has_many :interests, through: :user_interests
 	has_many :user_interests
 

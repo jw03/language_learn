@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
   end
 
   def video
-  	api_key = '45711342'
-  	@opentok= OpenTok::OpenTok.new('45711342', '54525e65d49550a0df0d750a22c915cfbd5260c0')
+  	api_key = ENV["API_KEY"]
+  	@opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
   	session_id = @opentok.create_session.session_id
   	token = @opentok.generate_token(session_id)
   	render :video,:locals => {

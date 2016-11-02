@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "sinatra"
+gem "gon"
 gem "opentok"
 gem "figaro"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>OpenTok Hello World</title>
     <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
     <script type="text/javascript">
         var apiKey = '<%= api_key %>';
@@ -12,10 +11,11 @@
     <script src="/js/helloworld.js"></script>
 </head>
 <body>
-    <h2>Hello, World!</h2>
-
+ 
     <div id="publisher"></div>
 
     <div id="subscribers"></div>
+    <h2>Join this chatroom</h2>
+    <p> Share this link: <a href="http://localhost:3000/vidchat/<%= session_id %>" target="_blank"> http://localhost:3000/vidchat/<%= session_id %> <a> </p>
 </body>
 </html>

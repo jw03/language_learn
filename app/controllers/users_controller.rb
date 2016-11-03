@@ -61,6 +61,30 @@ class UsersController < ApplicationController
     end
   end
 
+
+
+  def host_session
+    @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
+    sessionId = @opentok.create_session.session_id
+    url = "/vidchat/#{sessionId}"
+    redirect_to url
+  end
+
+
+  def join_session
+    @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
+    session_id = params[:session_id]
+    token = @opentok.generate_token(session_id)
+    api_key = ENV["API_KEY"]
+
+    render :video, :locals => {
+      :api_key => api_key,
+      :session_id => session_id,
+      :token => token
+    }
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

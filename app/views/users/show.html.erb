@@ -3,7 +3,7 @@
 <p>
   <strong>Image Profile:</strong>
   <% if @user.avatars[0].nil? %>
-  <%= image_tag 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwji74OlqozQAhUBKo8KHewhDVMQjRwIBw&url=http%3A%2F%2Fwww.ccusersforum.org%2F&bvm=bv.137132246,d.c2I&psig=AFQjCNGaFQiKMULyoSFDq4e_-_XSM7g_xA&ust=1478253401850429' %>
+  <%= image_tag 'http://www.ccusersforum.org/images/user.png' , :align=> "middle",  class:"img-circle", :size => "260x180" %>
   <% else %>
   <%= image_tag(@user.avatars[0].url , :align=> "middle",  class:"img-circle", :size => "260x180")%>
   <% end %>

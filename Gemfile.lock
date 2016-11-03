@@ -68,6 +68,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
     gon (6.0.1)
       actionpack (>= 3.0)
       json
@@ -76,6 +77,9 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+=======
+    hashie (3.4.6)
+>>>>>>> master
 =======
     hashie (3.4.6)
 >>>>>>> master
@@ -88,7 +92,11 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
     json (1.8.3)
+=======
+    jwt (1.5.6)
+>>>>>>> master
 =======
     jwt (1.5.6)
 >>>>>>> master
@@ -107,14 +115,14 @@ GEM
     minitest (5.9.1)
     multi_json (1.12.1)
     multi_xml (0.5.5)
-    nio4r (1.2.1)
-    nokogiri (1.6.8.1)
-      mini_portile2 (~> 2.1.0)
     opentok (2.3.4)
       activesupport (>= 2.0)
       addressable (~> 2.3)
       httparty (~> 0.13.1)
     multipart-post (2.0.0)
+    nio4r (1.2.1)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -209,11 +217,19 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   figaro
 <<<<<<< HEAD
+<<<<<<< HEAD
   gon
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   opentok
+=======
+  jbuilder (~> 2.5)
+  jquery-rails
+  listen (~> 3.0.5)
+  omniauth
+  omniauth-facebook
+>>>>>>> master
 =======
   jbuilder (~> 2.5)
   jquery-rails

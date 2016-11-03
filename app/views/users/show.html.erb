@@ -2,9 +2,12 @@
 
 <p>
   <strong>Image Profile:</strong>
-<%= image_tag (@user.avatars[0].large.url) , :align=> "middle",  class:"img-thumbnail"  %>
+  <% if @user.avatars[0].nil? %>
+  <%= image_tag 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwji74OlqozQAhUBKo8KHewhDVMQjRwIBw&url=http%3A%2F%2Fwww.ccusersforum.org%2F&bvm=bv.137132246,d.c2I&psig=AFQjCNGaFQiKMULyoSFDq4e_-_XSM7g_xA&ust=1478253401850429' %>
+  <% else %>
+  <%= image_tag(@user.avatars[0].url , :align=> "middle",  class:"img-circle", :size => "260x180")%>
+  <% end %>
 </p>
-
 
 <p>
   <strong>Last name:</strong>
@@ -32,12 +35,5 @@
 </p>
 
 
-
-
-
-
-
-
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', user_path(@user.id) %>

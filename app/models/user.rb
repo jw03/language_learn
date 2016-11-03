@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  mount_uploaders :avatars, AvatarUploader
+  
   validates_presence_of :email, message: "can't be blank!"
 
   has_many :authentications, :dependent => :destroy

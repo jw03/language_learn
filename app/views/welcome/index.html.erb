@@ -1,4 +1,90 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
 <% if signed_in? %>
-  <%= link_to 'Profile', user_path(current_user.id) %>
-<% end %>
 
+	<% if @teach_languages.count == 0 %>
+		<div id="empty-language-teach">
+		 <h1>What language you speak best?</h1>
+		 <p>We still don't know what language you're good at. Tick the following that you're good at.</p>
+				<%= form_for @user do |form| %>
+					<ul>
+						<% @languages.each do |x| %>
+							<li>
+								<%= x.name %> 
+								<%= check_box("user", "teach_languages", {:multiple =>true }, x.name, nil) %>
+							</li>
+						<!-- end for do each -->
+						<% end %>	
+					</ul>
+					<%= form.submit 'Submit'%>
+				<!-- end for form -->
+				<% end %>
+		</div>
+	<% else %>
+		<div id="language-teach">
+			<h1>You're good at speaking:</h1>
+			<ol>
+				<% @teach_languages.each do |x| %>
+					<li><%= x.name%></li>
+				<% end %>
+			</ol>
+		</div>
+	 <!-- end for if language to teach is nil -->
+	<% end %>
+
+	<% if @learn_languages.count == 0 %>
+		<div id="empty-language-learn">
+			<h1>What language you want to learn?</h1>
+			<p>We still don't know what language you want to learn. Tick the following languages that you want to learn.</p>
+			<%= form_for @user do |form| %>
+				<ul>
+					<% @languages.each do |x| %>
+						<li>
+							<%= x.name %> 
+							<%= check_box("user", "learn_languages", {:multiple =>true }, x.name, nil) %>
+						</li>
+					<% end %>	
+				</ul>
+				<%= form.submit 'Submit'%>
+			<% end %>
+		</div>
+	<% else %>
+		<div id="language-learn">
+			<h1>You want to learn:</h1>
+			<ol>
+				<% @learn_languages.each do |x| %>
+					<li><%= x.name%></li>
+				<% end %>
+			</ol>
+		</div>
+	<!-- end for if learn language is nil -->
+	<% end %>
+
+	<% if @user_interest.count == 0%>
+		<div id="empty-interest">
+			<h1>What interest you?</h1>
+			<p>Tick the following interest so that we can pair you up with people of similar interest!</p>
+			<%= form_for @user do |form| %>
+				<ul>
+					<% @interests.each do |x| %>
+						<li>
+							<%= x.name %> 
+							<%= check_box("user", "interests", {:multiple =>true }, x.name, nil) %>
+						</li>
+					<% end %>	
+				</ul>
+				<%= form.submit 'Submit'%>
+		 	<% end %>
+		</div>
+	<% else %>
+		<div id="user-interest">
+			<h1>Your interest are:</h1>
+			<ol>
+				<% @user_interest.each do |x| %>
+					<li><%= x.name%></li>
+				<% end %>
+			</ol>
+		</div>
+	<% end %>
+<% else %>
+<% end %>

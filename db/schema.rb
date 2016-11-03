@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103064132) do
+ActiveRecord::Schema.define(version: 20161103072602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20161103064132) do
     t.string   "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "host_id"
+    t.integer  "amount"
+    t.string   "chat_session"
+    t.bit      "is_paid",      limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "interests", force: :cascade do |t|
@@ -40,6 +50,16 @@ ActiveRecord::Schema.define(version: 20161103064132) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "chat_id"
+    t.string   "braintree_payment_id"
+    t.string   "status"
+    t.string   "fourdigit"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["chat_id"], name: "index_payments_on_chat_id", using: :btree
   end
 
   create_table "teach_languages", force: :cascade do |t|

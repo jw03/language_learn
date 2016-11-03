@@ -1,5 +1,4 @@
-    <% if signed_in? %>
-      <%= link_to 'Profile', user_path(current_user.id) %> |
-
-    <% end %>
+<% if signed_in? %>
+  <%= link_to 'Profile', user_path(current_user.id) %>
+<% end %>
 

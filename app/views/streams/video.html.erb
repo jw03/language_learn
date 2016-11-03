@@ -1,21 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
-    <script type="text/javascript">
-        var apiKey = '<%= api_key %>';
-        var sessionId = '<%= session_id %>';
-        var token = '<%= token %>';
-    </script>
-    <script src="/js/helloworld.js"></script>
-</head>
-<body>
- 
-    <div id="publisher"></div>
+<script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
+<script type="text/javascript">
+    var apiKey = '<%= api_key %>';
+    var sessionId = '<%= session_id %>';
+    var token = '<%= token %>';
+</script>
+<script src="/js/helloworld.js"></script>
 
-    <div id="subscribers"></div>
-    <h2>Join this chatroom</h2>
-    <p> Share this link: <a href="http://localhost:3000/vidchat/<%= session_id %>" target="_blank"> http://localhost:3000/vidchat/<%= session_id %> <a> </p>
-</body>
-</html>
+<div id="publisher"></div>
+
+<div id="subscribers"></div>
+<h2>Join this chatroom</h2>
+<p> Share this link: <a href="http://localhost:3000/vidchat/<%= session_id %>" target="_blank"> http://localhost:3000/vidchat/<%= session_id %> <a> </p>

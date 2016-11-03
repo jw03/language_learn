@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
   end
 
   # POST /users
@@ -43,30 +42,26 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-
-      
         languages = params["user"]["teach_languages"]
         if languages.nil?
         else
-        @user.teach_languages.destroy_all
-        languages.each {|x| @user.teach_languages.create(name: x)} 
+          @user.teach_languages.destroy_all
+          languages.each {|x| @user.teach_languages.create(name: x)} 
         end
         
-
         languages = params["user"]["learn_languages"]
         if languages.nil?
         else
-        @user.learn_languages.destroy_all
-        languages.each {|x| @user.learn_languages.create(name: x)} 
+          @user.learn_languages.destroy_all
+          languages.each {|x| @user.learn_languages.create(name: x)} 
         end
         
         interests = params["user"]["interests"]
         if interests.nil?
         else
-        @user.interests.destroy_all
-        interests.each {|x| @user.interests.create(name: x)} 
+          @user.interests.destroy_all
+          interests.each {|x| @user.interests.create(name: x)} 
         end
-
 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }

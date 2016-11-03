@@ -14,7 +14,7 @@
 
     <% if signed_in? %>
       Signed in as: <%= current_user.email %>
-        <%= link_to 'Profile', user_path(current_user.id) %>
+      <%= link_to 'Profile', user_path(current_user.id) %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
@@ -25,7 +25,6 @@
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>
     </div>
-
 
     <%= yield %>
   </body>

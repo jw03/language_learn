@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Image Profile:</strong>
+<%= image_tag (@user.avatars[0].large.url) , :align=> "middle",  class:"img-thumbnail"  %>
+</p>
+
+
+<p>
   <strong>Last name:</strong>
   <%= @user.last_name %>
 </p>
@@ -24,6 +30,14 @@
   <strong>Gender:</strong>
   <%= @user.gender %>
 </p>
+
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

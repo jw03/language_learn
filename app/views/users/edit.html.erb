@@ -3,6 +3,14 @@
 <%= form_for @user do |form| %>
   <%= render partial: 'form', object: form %>
 
+ <p>
+	<%= form.file_field :avatars, multiple: true %>
+</p>
+
+ <p>
+ <%= image_tag (form.avatars[0].large.url) , :align=> "middle",  class:"img-thumbnail"  %>
+</p>
+
   <div class="submit-field">
     <%= form.submit %>
   </div>

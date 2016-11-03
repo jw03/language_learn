@@ -9,12 +9,17 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
+/tmp/
 
 # Ignore Byebug command history file.
 .byebug_history
 
 # Ignore application configuration
 /config/application.yml
+
+.bundle
+/Gemfile.lock
+/coverage
+/gemfiles/*.gemfile.lock
+/pkg

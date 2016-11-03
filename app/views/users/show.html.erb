@@ -28,7 +28,7 @@
   </p>
 
 <p>
-    <strong>Total Coins:</strong>
+    <strong>Total Coins Purchased:</strong>
     <%= @user.total_coins %>
   </p>
 
@@ -38,11 +38,11 @@
 <ul class="list-group">
   <li class="list-group-item">
 
-    <strong>Payment Status:</strong>
+    <strong>Purchase Options</strong>
       <% if @chat.payments.where(status: :authorized).count == 0%>
-      <span class="btn btn-danger"> NOT PAID </span>
+     
 
-       <%= link_to 'Pay Now' , new_payment_path + "?id=" + reservation.id.to_s, class: "btn btn-warning"  %>
+       <%= link_to 'Buy 100 Coins Now' , new_payment_path + "?id=" + @chat.id.to_s, class: "btn btn-warning"  %>
       <% else %>
       <span class="btn btn-success">PAID</span>
       <% end %>

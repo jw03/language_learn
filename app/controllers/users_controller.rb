@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
@@ -42,6 +43,31 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+
+      
+        languages = params["user"]["teach_languages"]
+        if languages.nil?
+        else
+        @user.teach_languages.destroy_all
+        languages.each {|x| @user.teach_languages.create(name: x)} 
+        end
+        
+
+        languages = params["user"]["learn_languages"]
+        if languages.nil?
+        else
+        @user.learn_languages.destroy_all
+        languages.each {|x| @user.learn_languages.create(name: x)} 
+        end
+        
+        interests = params["user"]["interests"]
+        if interests.nil?
+        else
+        @user.interests.destroy_all
+        interests.each {|x| @user.interests.create(name: x)} 
+        end
+
+
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -69,6 +95,9 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender)
+      # byebug
+      # @languages = Language.all.pluck(:name)
+
+      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, :learn_language)
     end
 end

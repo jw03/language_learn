@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
+<% if signed_in? %>
+  <p id="notice"><%= notice %></p>
+
   <p>
     <strong>Last name:</strong>
     <%= @user.last_name %>
@@ -18,6 +19,7 @@
   <p>
     <strong>Age:</strong>
     <%= @user.age %>
+
   </p>
 
   <p>
@@ -25,12 +27,14 @@
     <%= @user.gender %>
   </p>
 
-  <p>
-    <strong>Gender:</strong>
+<p>
+    <strong>Total Coins:</strong>
     <%= @user.total_coins %>
   </p>
 
 </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% else %>
+<% end %>
+  <%= link_to 'Back', root_path %>

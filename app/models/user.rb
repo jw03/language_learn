@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  validates_presence_of :email, message: "can't be blank!"
 
   has_many :authentications, :dependent => :destroy
 

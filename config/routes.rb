@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:show, :edit, :update, :destroy] 
+  resources :users, only: [:edit, :update, :show]
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   

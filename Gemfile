@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # gems added by Erika
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'omniauth'
 gem "omniauth-facebook"
 gem "clearance"

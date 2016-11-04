@@ -12,11 +12,9 @@
           </li>
         <% else %>    
           <li class="nav--item">
-            <%= link_to 'Sign in', sign_in_path, :class => "nav-link" %>
             <a href="#" data-toggle="modal" data-target="#signin-modal">Sign In</a>
           </li>
           <li class="nav--item">
-            <a class="nav-link" href="">Sign up</a>
             <a href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a>
           </li>
         <% end %>
@@ -25,3 +23,30 @@
   </nav>
 </header>
 
+<div id="signin-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="clearance" class="sign-in">
+
+           <%= render partial: '/sessions/form' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="signup-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="clearance" class="sign-up">
+
+           <%= render partial: '/users/form' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

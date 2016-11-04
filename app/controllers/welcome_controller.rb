@@ -2,6 +2,7 @@ require 'opentok'
 
 class WelcomeController < ApplicationController
   def index
+
   	if signed_in?
 	  	@languages = Language.all
 	  	@interests = Interest.all

@@ -1,2 +1,71 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/normalize";
+@import "bootstrap/forms";
+@import "bootstrap/utilities";
+@import "bootstrap/grid";
+@import "bootstrap/responsive-embed";
+@import "bootstrap/type";
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+@import "bootstrap/jumbotron";
+@import "bootstrap/modals";
+
+$brand-primary: #D90368;
+
+.nav-wrapper {
+	position: fixed;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.navbar-brand {
+	color: $brand-primary;
+	font-size: 24px;
+	float: left;
+	text-decoration: none;
+	
+	&:hover {
+		color: $brand-primary;
+	}
+}
+
+.nav-top {
+	padding: 10px 0;
+}
+
+.nav-link {
+	text-decoration: none;
+	display: inline-block;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 25px;
+	background-color: $brand-primary;
+	color: #fff;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+		color: #fff;
+		opacity: 0.9;
+	}
+}
+
+.jumbotron {
+	background-color: #fff;
+	background-size: cover;
+	height: 100vh;
+	padding-top: 250px;
+	h2 {
+		color: #000;
+	}
+}

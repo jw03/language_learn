@@ -11,8 +11,16 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = current_user
+
     @chat = Chat.new(host_id: current_user.id, amount: 100, is_paid: "0")
     @chat.save
+
+    @user_interests = current_user.interests.all
+
+    @user_teach_languages = current_user.teach_languages
+
+    @user_learn_languages = current_user.learn_languages
+
   end
 
   # GET /users/new

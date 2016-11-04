@@ -32,6 +32,22 @@
     <%= @user.total_coins %>
   </p>
 
+  <p>
+    <strong>My Interests:</strong>
+    <% @user_interests.each do |x| %>
+    <li><%= x.name%></li>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>I Speak:</strong>
+    <% @user_teach_languages.each do |x| %>
+    <li><%= x.name%></li>
+    <% end %>
+  </p>
+
+
+
   <ul class="list-group">
     <li class="list-group-item">
       <strong>Purchase Options</strong>

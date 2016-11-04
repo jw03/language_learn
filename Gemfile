@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Gems needed to run opentok (videochat)
+gem "gon"
+gem "opentok"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -15,8 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-# gems added by Erika
+# Used for image uploading
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+# Gems needed for authentication and Facebook login
 gem 'omniauth'
 gem "omniauth-facebook"
 gem "clearance"

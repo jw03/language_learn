@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  mount_uploaders :avatars, AvatarUploader
+
   has_many :authentications, :dependent => :destroy
 
   has_many :interests, through: :user_interests
@@ -11,7 +13,6 @@ class User < ApplicationRecord
 
   has_many :learn_languages, through: :user_learn_languages
   has_many :user_learn_languages
-
 
   validates :first_name, uniqueness: true, presence: true
   validates :last_name, uniqueness: true, presence: true

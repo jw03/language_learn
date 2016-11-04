@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161103090949) do
+=======
+
+ActiveRecord::Schema.define(version: 20161103072602) do
+
+>>>>>>> e89004965f7386511a03f1759da8729ee6dbd79f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +28,16 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.string   "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "host_id"
+    t.integer  "amount"
+    t.string   "chat_session"
+    t.bit      "is_paid",      limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "interests", force: :cascade do |t|
@@ -40,6 +56,17 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "chat_id"
+    t.string   "braintree_payment_id"
+    t.string   "status"
+    t.string   "fourdigit"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["chat_id"], name: "index_payments_on_chat_id", using: :btree
   end
 
   create_table "streams", force: :cascade do |t|
@@ -94,7 +121,11 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
+<<<<<<< HEAD
     t.json     "avatars"
+=======
+    t.integer  "total_coins"
+>>>>>>> e89004965f7386511a03f1759da8729ee6dbd79f
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

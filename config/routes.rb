@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+ get 'payments/new', as: "new_payment"
+
+  post 'payments/create', as: "payments"
+
   resources :users, only: [:edit, :update, :show]
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

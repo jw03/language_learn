@@ -3,12 +3,23 @@
     <div class="container nav-top">
       <a class="navbar-brand" href="">Language</a>
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav--item">
-          <a class="nav-link" href="">Login</a>
-        </li>
-        <li class="nav--item">
-          <a class="nav-link" href="">Sign up</a>
-        </li>
+        <% if signed_in? %>
+          <li class="nav--item">
+            <%= link_to 'Profile', user_path(current_user.id), :class => "nav-link" %>
+          </li>
+          <li class="nav--item">
+            <%= link_to 'Sign out', sign_out_path, method: :delete, :class => "nav-link" %>
+          </li>
+        <% else %>    
+          <li class="nav--item">
+            <%= link_to 'Sign in', sign_in_path, :class => "nav-link" %>
+            <a href="#" data-toggle="modal" data-target="#signin-modal">Sign In</a>
+          </li>
+          <li class="nav--item">
+            <a class="nav-link" href="">Sign up</a>
+            <a href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </nav>

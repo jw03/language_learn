@@ -16,19 +16,13 @@
   </head>
 
   <body>
-    <nav class="navbar">
+    <%= render partial: '/layouts/navigation' %>
+    <div class="jumbotron">
       <div class="container">
-        <a class="navbar-brand" href="">Speak</a>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav--item">
-            <a class="nav-link" href="">Sign up</a>
-          </li>
-          <li class="nav--item">
-            <a class="nav-link" href="">Login</a>
-          </li>
-        </ul>
+        <h2 class="text-center">Welcome to your Language Exchange.</h2>
+        <p class="text-center"><a href="" class="btn">Get started</a></p>
       </div>
-    </nav>
+    </div>
 
     <% if signed_in? %>
       Signed in as: <%= current_user.email %>
@@ -37,6 +31,8 @@
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
     <% end %>
+
+
 
     <div id="flash">
       <% flash.each do |key, value| %>

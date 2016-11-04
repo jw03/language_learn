@@ -86,13 +86,4 @@
 			</ol>
 		</div>
 	<% end %>
-<% else %>
-	<div id="user-interest">
-		<h1>Your interest are:</h1>
-		<ol>
-			<% @user_interest.each do |x| %>
-				<li><%= x.name%></li>
-			<% end %>
-		</ol>
-	</div>
 <% end %>

@@ -1,0 +1,35 @@
+<h2>Payment Page</h2>
+
+<%= form_for(@payment) do |f| %>
+
+
+
+  <div class="lead">
+    <%= f.label :Total %><br>
+    <span class="label label-warning">RM <%= @chat.amount %> </span>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :chat_id, value: @chat.id %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :total_price, value: @chat.amount %>
+  </div>
+
+  <div class="field">
+    <div id="dropin"></div>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "Pay Now", class: "btn btn-danger"%>
+  </div>
+<% end %>
+
+
+<script src="https://js.braintreegateway.com/js/braintree-2.22.2.min.js"></script>
+<script>
+ braintree.setup("<%=@client_token%>", "dropin", {
+   container: "dropin"
+ });
+</script>

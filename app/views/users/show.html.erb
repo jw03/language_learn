@@ -19,12 +19,36 @@
   <p>
     <strong>Age:</strong>
     <%= @user.age %>
+
   </p>
 
   <p>
     <strong>Gender:</strong>
     <%= @user.gender %>
   </p>
+
+<p>
+    <strong>Total Coins Purchased:</strong>
+    <%= @user.total_coins %>
+  </p>
+
+</div>
+
+
+<ul class="list-group">
+  <li class="list-group-item">
+
+    <strong>Purchase Options</strong>
+      <% if @chat.payments.where(status: :authorized).count == 0%>
+     
+
+       <%= link_to 'Buy 100 Coins Now' , new_payment_path + "?id=" + @chat.id.to_s, class: "btn btn-warning"  %>
+      <% else %>
+      <span class="btn btn-success">PAID</span>
+      <% end %>
+  </li>
+</ul>
+
 
   <%= link_to 'Edit', edit_user_path(@user) %> |
 <% else %>

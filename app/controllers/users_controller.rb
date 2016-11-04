@@ -98,15 +98,12 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def host_session
     @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
     sessionId = @opentok.create_session.session_id
     url = "/vidchat/#{sessionId}"
     redirect_to url
   end
-
 
   def join_session
     @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
@@ -120,7 +117,6 @@ class UsersController < ApplicationController
       :token => token
     }
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

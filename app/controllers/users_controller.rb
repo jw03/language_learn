@@ -10,12 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
     @user = current_user
-    
     @chat = Chat.new(host_id: current_user.id, amount: 100, is_paid: "0")
     @chat.save
-
   end
 
   # GET /users/new
@@ -25,7 +22,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
     if current_user.nil?
       redirect_to root_url
     else
@@ -126,11 +122,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-
-      # byebug
       # @languages = Language.all.pluck(:name)
-
       params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, {avatars: []}, :learn_language)
-
     end
 end

@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  validates_presence_of :email, message: "can't be blank!"
-
   has_many :authentications, :dependent => :destroy
 
   has_many :interests, through: :user_interests
@@ -14,6 +12,12 @@ class User < ApplicationRecord
   has_many :learn_languages, through: :user_learn_languages
   has_many :user_learn_languages
 
+
+  validates :first_name, uniqueness: true, presence: true
+  validates :last_name, uniqueness: true, presence: true
+  validates :gender, presence: true
+  validates :age, numericality: { greater_than: 18, only_integer: true }
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, presence: true
 
 
   def self.create_with_auth_and_hash(authentication,auth_hash)

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 	get 'users/index'
   # get 'welcome/index'
 
-   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -86,4 +86,20 @@
 			</ol>
 		</div>
 	<% end %>
+
+<div id="host-a-chat">
+	<h1>If you're ready, click here to start a chat!</h1>
+	<%= link_to 'Chat!', host_path%>
+</div>
+
+<div id="available-chat-list">
+	<ol>
+		<% @chats_available.each do |x| %>
+		<li><%= x.chat_session%></li>
+		<% end %>
+	</ol>
+</div>
+
+	
+<% else %>
 <% end %>

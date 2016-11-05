@@ -28,6 +28,12 @@
     <div class="modal-content">
       <div class="modal-body">
         <div id="clearance" class="sign-in">
+          <%= link_to "Connect with Facebook", '/auth/facebook', :class => "like-btn like-btn--fb" %>
+            <div class="signin-separator">
+              <span class="signin-separator--text">or</span>
+              <hr>
+            </div>
+
            <%= render partial: '/sessions/form' %>
         </div>
       </div>

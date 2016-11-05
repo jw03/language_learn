@@ -1,11 +1,23 @@
 <h1>Editing User</h1>
 
 <%= form_for @user do |form| %>
-	<%= render partial: '/users/form', object: form %>
-		<div class="submit-field">
-			<%= form.submit %>
-		</div>
+  <%= render partial: 'form', object: form %>
+
+ 	<p>
+		<%= form.file_field :avatars, multiple: true %>
+	</p>
+
+ 	<p>
+  	<% unless @user.avatars[0].nil? %>
+	  	<%= image_tag (@user.avatars[0].url) , :align=> "middle",  class:"img-circle", :size => "260x180" %>
+	  <% end %>
+	</p>
+
+  <div class="submit-field">
+    <%= form.submit %>
+  </div>
+
 <% end %>
 
 <%= link_to 'Show', @user %> |
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', user_path(@user.id) %>

@@ -1,2 +1,150 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/normalize";
+@import "bootstrap/forms";
+@import "bootstrap/utilities";
+@import "bootstrap/grid";
+@import "bootstrap/responsive-embed";
+@import "bootstrap/type";
+@import "bootstrap/input-groups";
+@import "bootstrap/forms";
+@import "bootstrap/scaffolding";
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+@import "bootstrap/jumbotron";
+@import "bootstrap/modals";
+
+$brand-primary: #D90368;
+
+// NAV ---- 
+
+.nav-wrapper {
+	position: fixed;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.navbar-brand {
+	color: $brand-primary;
+	font-size: 24px;
+	float: left;
+	text-decoration: none;
+	
+	&:hover {
+		color: $brand-primary;
+	}
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+	background-color: #fff;
+}
+
+.nav-top {
+	padding: 10px 0;
+}
+
+.nav-link {
+	text-decoration: none;
+	display: inline-block;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 25px;
+	background-color: $brand-primary;
+	color: #fff;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+		color: #fff;
+		opacity: 0.9;
+	}
+}
+
+.jumbotron {
+	background-color: #fff;
+	background-size: cover;
+	height: 100vh;
+	padding-top: 250px;
+	h2 {
+		color: #000;
+	}
+}
+
+// Modal -------
+
+.modal-content {
+	border-radius: 0;
+}
+
+.like-btn {
+	display: block;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+}
+
+.like-btn--fb {
+	background-color: #3B5998;
+	color: #fff;
+	&:hover {
+		opacity: 0.9;
+		text-decoration: none;
+		color: #fff
+	}
+}
+
+.input-full-width {
+	width: 100%;
+	height: 60px;
+	margin-top: 10px;
+	padding: 0 10px;
+	border-width: 0;
+	border: 1px solid #ccc;
+}
+
+.full-width-input-primary {
+	background-color: $brand-primary;
+	color: #fff;
+	border: 0;
+	&:hover {
+		opacity: 0.9;
+	}
+}
+
+.signin-separator {
+	height: 30px;
+	text-align: center;
+	hr {
+		margin: -18px auto 10px;
+		width: 100%;
+	}
+}
+
+.signin-separator--text {
+	padding: 9px;
+	display: inline-block;
+	background-color: #fff;
+}
+
+.signin-footer {
+	padding-bottom: 8px;
+}
+
+.input-form	{
+	margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+	.modal-md {
+		width: 450px;
+	}
+}

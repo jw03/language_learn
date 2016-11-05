@@ -10,6 +10,17 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = current_user
+
+    @chat = Chat.new(host_id: current_user.id, amount: 100, is_paid: "0")
+    @chat.save
+
+    @user_interests = current_user.interests.all
+
+    @user_teach_languages = current_user.teach_languages
+
+    @user_learn_languages = current_user.learn_languages
+
   end
 
   # GET /users/new
@@ -19,6 +30,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if current_user.nil?
+      redirect_to root_url
+    else
+     render :edit
+    end
   end
 
   # POST /users
@@ -82,15 +98,12 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def host_session
     @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
     sessionId = @opentok.create_session.session_id
     url = "/vidchat/#{sessionId}"
     redirect_to url
   end
-
 
   def join_session
     @opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
@@ -105,7 +118,6 @@ class UsersController < ApplicationController
     }
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -114,9 +126,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      # byebug
       # @languages = Language.all.pluck(:name)
-
-      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, :learn_language)
+      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, {avatars: []}, :learn_language)
     end
 end

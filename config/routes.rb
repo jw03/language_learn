@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
   get '/room/:rid', to: 'streams#room', as: "room"
 
-
   root 'welcome#index'
 
 	get 'users/index'

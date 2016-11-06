@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+
  get 'payments/new', as: "new_payment"
 
   post 'payments/create', as: "payments"

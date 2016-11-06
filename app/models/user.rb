@@ -4,12 +4,8 @@ class User < ApplicationRecord
   mount_uploaders :avatars, AvatarUploader
 
   has_many :authentications, :dependent => :destroy
-
-  has_many :interests, through: :user_interests
-  has_many :user_interests
-
+  has_and_belongs_to_many :interests
   has_and_belongs_to_many :teach_languages
-
   has_and_belongs_to_many :learn_languages
 
 # validations for the correct input format

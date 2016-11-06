@@ -1,5 +1,37 @@
 <h1>Admin#index</h1>
 <p>Find me in app/views/admin/index.html.erb</p>
+	<% @learn.each do |x| %>
+<table class="table" id="learn">
+<tr>
+	<th>Language</th>
+	<th>Users</th>
+</tr>	
+
+
+<tr>
+	<td><%= x.name%></td> 
+	<td><% x.users.all.each do |y| %>
+		
+	</td>
+</tr>
+
+</table>
+<% end %>
+
+<table class="table" id="teach">
+<tr>
+	<th>Language</th>
+</tr>	
+
+	<% @teach.each do |x| %>
+<tr>
+	<td><%= x.name%></td> 
+</tr>
+<% end %>
+</table>
+
+
+
 
 
 
@@ -13,17 +45,16 @@
 		<th>session</th>
 		<th>is_paid</th>
 	</tr>
-	
 
-		<% @chats.each do |x| %>
-			<tr>
-				<td><%= x.id%></td>
-				<td><%= x.guest_id%></td>
-				<td><%= x.host_id%></td>
-				<td><%= x.amount%></td>
-				<td><%= x.chat_session%></td>
-				<td><%= x.is_paid%></td>
-			</tr>
-		<% end %>
+	<% @chats.each do |x| %>
+		<tr>
+			<td><%= x.id%></td>
+			<td><%= x.guest_id%></td>
+			<td><%= x.host_id%></td>
+			<td><%= x.amount%></td>
+			<td><%= x.chat_session%></td>
+			<td><%= x.is_paid%></td>
+		</tr>
+	<% end %>
 
 </table>

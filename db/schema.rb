@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "learn_languages_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "learn_language_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["learn_language_id"], name: "index_learn_languages_users_on_learn_language_id", using: :btree
+    t.index ["user_id"], name: "index_learn_languages_users_on_user_id", using: :btree
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer  "chat_id"
     t.string   "braintree_payment_id"
@@ -75,6 +84,15 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teach_languages_users", force: :cascade do |t|
+    t.integer  "teach_language_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["teach_language_id"], name: "index_teach_languages_users_on_teach_language_id", using: :btree
+    t.index ["user_id"], name: "index_teach_languages_users_on_user_id", using: :btree
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "interest_id"
@@ -82,24 +100,6 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.datetime "updated_at",  null: false
     t.index ["interest_id"], name: "index_user_interests_on_interest_id", using: :btree
     t.index ["user_id"], name: "index_user_interests_on_user_id", using: :btree
-  end
-
-  create_table "user_learn_languages", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "learn_language_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["learn_language_id"], name: "index_user_learn_languages_on_learn_language_id", using: :btree
-    t.index ["user_id"], name: "index_user_learn_languages_on_user_id", using: :btree
-  end
-
-  create_table "user_teach_languages", force: :cascade do |t|
-    t.integer  "teach_language_id"
-    t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["teach_language_id"], name: "index_user_teach_languages_on_teach_language_id", using: :btree
-    t.index ["user_id"], name: "index_user_teach_languages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

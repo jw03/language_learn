@@ -14,10 +14,7 @@ class User < ApplicationRecord
   has_many :learn_languages, through: :user_learn_languages
   has_many :user_learn_languages
 
-  validates :first_name, uniqueness: true, presence: true
-  validates :last_name, uniqueness: true, presence: true
-  validates :gender, presence: true
-  validates :age, numericality: { greater_than: 18, only_integer: true }
+# validations for the correct input format
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, presence: true
 
 

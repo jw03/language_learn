@@ -93,9 +93,22 @@
 </div>
 
 <div id="available-chat-list">
+<h1>List of available host</h1>
 	<ol>
 		<% @chats_available.each do |x| %>
-		<li><%= x.chat_session%></li>
+		<% b = User.find(x.host_id) %>
+		<li>
+		<%= link_to 'join chat', join_path(x.chat_session) %>, 
+		hosted by: <%= b.first_name %>,
+		speaks:
+			<% b.teach_languages.all.each do |z| %>
+			-<%= z.name %>
+			<% end %>
+		, interest:
+			<% b.interests.all.each do |y| %>
+			 -<%= y.name %>	
+			<% end %>
+		</li>
 		<% end %>
 	</ol>
 </div>

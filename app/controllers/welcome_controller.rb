@@ -2,7 +2,6 @@ require 'opentok'
 
 class WelcomeController < ApplicationController
   def index
-   
 
   	if signed_in?
 	  	@languages = Language.all
@@ -15,6 +14,5 @@ class WelcomeController < ApplicationController
 	  else
 	  end
   end
-
 
 end

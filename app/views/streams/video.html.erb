@@ -9,5 +9,5 @@
 <div id="publisher"></div>
 
 <div id="subscribers"></div>
-<h2>Join this chatroom</h2>
-<p> Share this link: <a href="http://localhost:3000/vidchat/<%= session_id %>" target="_blank"> http://localhost:3000/vidchat/<%= session_id %> <a> </p>
+
+<%= link_to 'Join this chat', join_path(session_id)  %>

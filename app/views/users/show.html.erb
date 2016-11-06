@@ -51,11 +51,9 @@
   <ul class="list-group">
     <li class="list-group-item">
       <strong>Purchase Options</strong>
-        <% if @chat.payments.where(status: :authorized).count == 0%>
-          <%= link_to 'Buy 100 Coins Now' , new_payment_path + "?id=" + @chat.id.to_s, class: "btn btn-warning"  %>
-        <% else %>
-          <span class="btn btn-success">PAID</span>
-        <% end %>
+   
+          <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
+        
     </li>
   </ul>
 

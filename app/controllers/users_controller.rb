@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
 
-    @chat = Chat.new(host_id: current_user.id, amount: 100, is_paid: "0")
-    @chat.save
+    @chat = Chat.new(host_id: current_user.id, amount:100, is_paid: 0)
 
     @user_interests = current_user.interests.all
 

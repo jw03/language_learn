@@ -3,5 +3,6 @@ class AdminController < ApplicationController
   	@chats = Chat.all
   	@learn = LearnLanguage.all
   	@teach = TeachLanguage.all
+
   end
 end

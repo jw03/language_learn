@@ -3,14 +3,15 @@ class StreamsController < ApplicationController
   def host
   	@opentok= OpenTok::OpenTok.new(ENV["API_KEY"], ENV["API_SECRET"])
 
-    @chat = Chat.where(host_id: current_user.id).last
+    @chat = Chat.where(host_id: current_user.id, amount: nil).last
     if @chat.nil?
-      sessionId = @opentok.create_session.session_id
-      @new_host = Chat.create(chat_session: sessionId, host_id: current_user.id)
+      @sessionId = @opentok.create_session.session_id
+      @new_host = Chat.create(chat_session: @sessionId, host_id: current_user.id)
     else
-      sessionId = @chat.chat_session
+      @sessionId = @chat.chat_session
     end
-    url = "/vidchat/#{sessionId}"
+    byebug
+    url = "/vidchat/" + @sessionId.to_s
     redirect_to url
   end
 

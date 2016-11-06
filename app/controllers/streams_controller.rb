@@ -10,7 +10,7 @@ class StreamsController < ApplicationController
     else
       @sessionId = @chat.chat_session
     end
-    byebug
+    
     url = "/vidchat/" + @sessionId.to_s
     redirect_to url
   end

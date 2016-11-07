@@ -4,7 +4,9 @@ class PaymentsController < ApplicationController
 
   def new
     @client_token = Braintree::ClientToken.generate
-    @chat = Chat.find(params[:id])
+    @chat = Chat.where(host_id:current_user.id, is_paid:0)
+    @chat.destroy_all
+     @chat = Chat.create(host_id: current_user.id, amount:100, is_paid: 0)
     @payment = Payment.new
   end
 

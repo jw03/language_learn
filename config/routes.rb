@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+
  get 'payments/new', as: "new_payment"
 
   post 'payments/create', as: "payments"
@@ -16,12 +18,14 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   get '/newvidchat', to: 'streams#host', as: "host"
+
   get '/room/:rid', to: 'streams#room', as: "room"
+
 
   root 'welcome#index'
 

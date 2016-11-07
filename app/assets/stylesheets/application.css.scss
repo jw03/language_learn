@@ -16,6 +16,8 @@
 @import "bootstrap/jumbotron";
 @import "bootstrap/modals";
 @import "bootstrap/tables";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 $brand-primary: #D90368;
 
@@ -169,6 +171,30 @@ label {
 .input-form	{
 	margin-top: 40px;
 }
+
+.profile-img-placeholder {
+	height: 180px;
+	width: 180px;
+	border: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 20px;
+	&:before {
+		content: "\f007";
+		font-family: FontAwesome;
+		font-size: 100px;
+	}
+}
+
+.profile-img-spacer {
+	margin-top: 60px;
+}
+
+.radio-gender {
+	padding-bottom: 10px;
+}
+
+
 
 @media (min-width: 768px) {
 	.modal-md {

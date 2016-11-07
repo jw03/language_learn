@@ -1,9 +1,11 @@
 <%= form_for :session, url: session_path do |form| %>
-  <%= link_to "Connect with Facebook", '/auth/facebook', :class => "like-btn like-btn--fb" %>
+  <%= link_to "Signup with Facebook", '/auth/facebook', :class => "like-btn like-btn--fb" %>
+
   <div class="signin-separator">
     <span class="signin-separator--text">or</span>
     <hr>
   </div>
+
   <div class="text-field">
     <%= form.text_field :email, type: 'email', placeholder: "Email", :class => "input-full-width" %>
   </div>

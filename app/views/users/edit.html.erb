@@ -1,23 +1,44 @@
-<h1>Editing User</h1>
+<%= form_for @user, url: user_path  do |f| %>        
+  <div class="row">
+    <div class="col-sm-4">
+      <% if @user.avatars[0].nil? %>
+        <div class="profile-img-placeholder">
+        </div>
+      <% else %>
+      <div>
+        <%= image_tag (@user.avatars[0].url), :size => "180x180" %>
+      </div>
+    </div>
+    <% end %>
+    <div class="col-sm-8">
+      <p class="profile-img-spacer">
+        Upload an image of yourself so other users can see what you look like. Click the choose file button and pick an image.
+      </p>
+      <%= f.file_field :avatars, multiple: true %>
+    </div>
+  </div>
+	<%= f.label :first_name %>
+  <%= f.text_field :first_name, class: 'input-full-width' %>
 
-<%= form_for @user do |form| %>
-  <%= render partial: 'form', object: form %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: 'input-full-width' %>
 
- 	<p>
-		<%= form.file_field :avatars, multiple: true %>
-	</p>
+  <%= f.label :email %>
+  <%= f.text_field :email, class: 'input-full-width' %>
 
- 	<p>
-  	<% unless @user.avatars[0].nil? %>
-	  	<%= image_tag (@user.avatars[0].url) , :align=> "middle",  class:"img-circle", :size => "260x180" %>
-	  <% end %>
-	</p>
+  <%= f.label :age %>
+  <%= f.text_field :age, class: 'input-full-width' %>
 
-  <div class="submit-field">
-    <%= form.submit %>
+  <div class="radio-gender">
+    <%= f.label :gender %>
+    <div>
+      <%= radio_button("user", "gender", "Male") %>
+      <%= label_tag(:gender, "Male") %>
+      <%= radio_button("user", "gender", "Female") %>
+      <%= label_tag(:gender, "Female") %>
+    </div>
   </div>
 
-<% end %>
+  <%= f.submit class: 'input-full-width full-width-input-primary' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', user_path(@user.id) %>
+<% end %>

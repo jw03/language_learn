@@ -1,65 +1,67 @@
 <% if signed_in? %>
-  <p>
-    <strong>Image Profile:</strong>
-    <% if @user.avatars[0].nil? %>
-      <%= image_tag 'http://www.ccusersforum.org/images/user.png' , :align=> "middle",  class:"img-circle", :size => "260x180" %>
-    <% else %>
-      <%= image_tag(@user.avatars[0].url , :align=> "middle",  class:"img-circle", :size => "260x180")%>
-    <% end %>
-  </p>
-  <p>
-    <strong>First name:</strong>
-    <%= @user.first_name %>
-  </p>
-  <p>
-    <strong>Last name:</strong>
-    <%= @user.last_name %>
-  </p>
-  <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </p>
-  <p>
-    <strong>Age:</strong>
-    <%= @user.age %>
-  </p>
-  <p>
-    <strong>Gender:</strong>
-    <%= @user.gender %>
-  </p>
-  <p>
-    <strong>Total Coins Purchased:</strong>
-    <%= @user.total_coins %>
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="nav nav-stacked">
+          <li class="active"><a href="#edit-profile" data-toggle="tab">Edit Profile</a></li>
+          <li><a href="#conversations" data-toggle="tab">Conversation history</a></li>
+          <li><a href="#languages-and-interests" data-toggle="tab">Languages and interests</a></li>
+          <li><a href="#coins" data-toggle="tab">Coins</a></li>
+        </ul>
+      </div>
 
-  <p>
-    <strong>My Interests:</strong>
-    <% @user_interests.each do |x| %>
-    <li><%= x.name%></li>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>I Speak:</strong>
-    <% @user_teach_languages.each do |x| %>
-    <li><%= x.name%></li>
-    <% end %>
-  </p>
-
-
-
-  <ul class="list-group">
-    <li class="list-group-item">
-      <strong>Purchase Options</strong>
-   
-          <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
-        
-    </li>
-  </ul>
-
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+      <div class="col-md-8">
+          <div class="tab-content">
+            <div class="tab-pane active" id="edit-profile">
+              <div class="panel-header">
+                <h3>Profile</h3>
+              </div>
+              <div class="panel-main">
+                <%= render template: 'users/edit' %>
+              </div>
+            </div>
+            <div class="tab-pane" id="languages-and-interests">
+              <div class="panel-header">
+                <h3>Languages and interests</h3>
+              </div>
+              <div class="panel-main">
+                <p>
+                  <strong>My Interests</strong>
+                  <% @user_interests.each do |x| %>
+                  <li><%= x.name%></li>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>I Speak</strong>
+                  <% @user_teach_languages.each do |x| %>
+                  <li><%= x.name%></li>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>I am learning</strong>
+                  <% @user_learn_languages.each do |x| %>
+                  <li><%= x.name%></li>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <div class="tab-pane" id="coins">
+              <div class="panel-header">
+                <h3>Coins</h3>
+              </div>
+              <div class="panel-main">
+                <p>Coins are used when you join a chat as a student. You can earn coins by hosting calls to help out the community, or you can buy coins and start chatting in the language you are learning.</p>
+                <p>Top up your coins by picking from the options below</p>
+                <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
+                <p class="padding-top--sm">You currently have <span><%= @user.total_coins %></span> coins remaining</p>     
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% else %>
   <% redirect_to root_url %>
+  
 <% end %>
-<%= link_to 'Back', root_path %>
-

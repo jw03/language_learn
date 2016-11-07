@@ -16,8 +16,35 @@
 @import "bootstrap/jumbotron";
 @import "bootstrap/modals";
 @import "bootstrap/tables";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 $brand-primary: #D90368;
+
+body {
+	padding-top: 90px;
+}
+
+label {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.panel-header {
+	border: 1px solid #ccc;
+	padding: 20px 20px;
+	h3 {
+		font-size: 20px;
+		margin: 0;
+	}
+}
+
+.panel-main {
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-top: 0;
+
+}
 
 // NAV ---- 
 
@@ -27,6 +54,7 @@ $brand-primary: #D90368;
 	top: 0;
 	left: 0;
 	right: 0;
+	z-index: 10;
 }
 
 .navbar-brand {
@@ -143,6 +171,30 @@ $brand-primary: #D90368;
 .input-form	{
 	margin-top: 40px;
 }
+
+.profile-img-placeholder {
+	height: 180px;
+	width: 180px;
+	border: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 20px;
+	&:before {
+		content: "\f007";
+		font-family: FontAwesome;
+		font-size: 100px;
+	}
+}
+
+.profile-img-spacer {
+	margin-top: 60px;
+}
+
+.radio-gender {
+	padding-bottom: 10px;
+}
+
+
 
 @media (min-width: 768px) {
 	.modal-md {

@@ -8,7 +8,11 @@ class User < ApplicationRecord
   has_and_belongs_to_many :teach_languages
   has_and_belongs_to_many :learn_languages
 
-# validations for the correct input format
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :gender, presence: true
+  validates :age, numericality: { greater_than: 18, only_integer: true }
+
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, presence: true
 
 

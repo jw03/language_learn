@@ -1,10 +1,38 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 <% if signed_in? %>
+	<div class="container">
+		<% if @teach_languages.count == 0 %>
+			<div id="empty-language-teach">
+			  <h1>What language you speak best?</h1>
+			  <p>We still don't know what language you're good at. Tick the following that you're good at.</p>
+					<%= form_for @user do |form| %>
+						<ul>
+							<% @languages.each do |x| %>
+								<li>
+									<%= x.name %> 
+									<%= check_box("user", "teach_languages", {:multiple =>true }, x.name, nil) %>
+								</li>
+							<!-- end for do each -->
+							<% end %>	
+						</ul>
+						<%= form.submit 'Submit'%>
+					<!-- end for form -->
+					<% end %>
+			</div>
+		<% else %>
+			<div id="language-teach">
+				<h1>You're good at speaking:</h1>
+				<ol>
+					<% @teach_languages.each do |x| %>
+						<li><%= x.name%></li>
+					<% end %>
+				</ol>
+			</div>
+		 <!-- end for if language to teach is nil -->
+		<% end %>
+
 
 	<% if @teach_languages.count == 0 %>
 		<div id="empty-preference">
-
 				<%= form_for @user do |form| %>
 						 <h1>What language you speak best?</h1>
 		 <p>We still don't know what language you're good at. Tick the following that you're good at.</p>
@@ -12,9 +40,8 @@
 						<% @languages.each do |x| %>
 							<li>
 								<%= x.name %> 
-								<%= check_box("user", "teach_languages", {:multiple =>true }, x.name, nil) %>
+								<%= check_box("user", "learn_languages", {:multiple =>true }, x.name, nil) %>
 							</li>
-						<!-- end for do each -->
 						<% end %>	
 					</ul>
 					<h1>What language you want to learn?</h1>
@@ -73,13 +100,16 @@
 	<% end %>
 
 
-
 <div id="host-a-chat">
 	<h1>If you're ready, click here to start a chat!</h1>
 	<%= link_to 'Chat!', host_path%>
 </div>
 
-
-	
 <% else %>
+	<div class="jumbotron">
+    <div class="container">
+      <h2 class="text-center">Welcome to your Language Exchange.</h2>
+      <p class="text-center"><a href="#" class="btn" data-toggle="modal" data-target="#signin-modal">Get started</a></p>
+    </div>
+  </div>
 <% end %>

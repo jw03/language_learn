@@ -1,6 +1,5 @@
 <% if signed_in? %>
   <div class="container">
-
     <div class="row">
       <div class="col-md-4">
         <ul class="nav nav-stacked">
@@ -27,7 +26,6 @@
               <li><%= x.name%></li>
               <% end %>
             </p>
-
             <p>
               <strong>I Speak:</strong>
               <% @user_teach_languages.each do |x| %>
@@ -39,20 +37,17 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <strong>Purchase Options</strong>
-                  <% if @chat.payments.where(status: :authorized).count == 0%>
-                    <%= link_to 'Buy 100 Coins Now' , new_payment_path + "?id=" + @chat.id.to_s, class: "btn btn-warning"  %>
-                  <% else %>
-                    <span class="btn btn-success">PAID</span>
-                  <% end %>
+                  <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
               </li>
             </ul>
-          <strong>Total Coins Purchased:</strong>
-          <%= @user.total_coins %>
+            <strong>Total Coins Purchased:</strong>
+            <%= @user.total_coins %>
           </div>
         </div>
       </div>
     </div>
+  </div>
 <% else %>
   <% redirect_to root_url %>
-  </div>
+  
 <% end %>

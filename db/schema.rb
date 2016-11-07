@@ -63,9 +63,8 @@ ActiveRecord::Schema.define(version: 20161103090949) do
   end
 
   create_table "streams", force: :cascade do |t|
-    t.string   "host_id"
-    t.string   "guest_id"
-    t.string   "duration"
+    t.string   "rid"
+    t.string   "sid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Gems needed to run opentok (videochat)
+gem 'browserify-rails'
 gem "gon"
 gem "opentok"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

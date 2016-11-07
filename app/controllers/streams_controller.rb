@@ -13,7 +13,8 @@ class StreamsController < ApplicationController
   		sid = @stream.sid
   		token = @opentok.generate_token(sid)
   	else
-  		sid = @opentok.create_session.session_id
+  		router = @opentok.create_session :archive_mode => :always,:media_mode => :routed
+  		sid = router.session_id
   		@stream = Stream.new(rid: rid,sid: sid)
   		@stream.save!
   		token = @opentok.generate_token(sid)

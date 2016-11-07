@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  post '/users/:user_id/learn', to: 'languages#learn', as: "learn"
+
+  get 'languages/update'
+
   get 'admin/index'
 
- get 'payments/new', as: "new_payment"
+  get 'payments/new', as: "new_payment"
 
   post 'payments/create', as: "payments"
 
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
   get '/newvidchat', to: 'streams#host', as: "host"
 
   get '/room/:rid', to: 'streams#room', as: "room"
-
 
   root 'welcome#index'
 

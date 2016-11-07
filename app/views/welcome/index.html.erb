@@ -2,51 +2,23 @@
 <p>Find me in app/views/welcome/index.html.erb</p>
 <% if signed_in? %>
 
-	<% if @teach_languages.count == 0 %>
-		<div id="empty-language-teach">
-		 <h1>What language you speak best?</h1>
-		 <p>We still don't know what language you're good at. Tick the following that you're good at.</p>
-				<%= form_for @user do |form| %>
-					<ul>
-						<% @languages.each do |x| %>
-							<li>
-								<%= x.name %> 
-								<%= check_box("user", "teach_languages", {:multiple =>true }, x.name, nil) %>
-							</li>
-						<!-- end for do each -->
-						<% end %>	
-					</ul>
-					<%= form.submit 'Submit'%>
-				<!-- end for form -->
-				<% end %>
-		</div>
-	<% else %>
-		<div id="language-teach">
-			<h1>You're good at speaking:</h1>
-			<ol>
-				<% @teach_languages.each do |x| %>
-					<li><%= x.name%></li>
-				<% end %>
-			</ol>
-		</div>
-	 <!-- end for if language to teach is nil -->
-	<% end %>
-
-	<% if @learn_languages.count == 0 %>
+	<% if @user.learn_languages.count == 0 %>
 		<div id="empty-language-learn">
 			<h1>What language you want to learn?</h1>
 			<p>We still don't know what language you want to learn. Tick the following languages that you want to learn.</p>
-			<%= form_for @user do |form| %>
-				<ul>
-					<% @languages.each do |x| %>
-						<li>
-							<%= x.name %> 
-							<%= check_box("user", "learn_languages", {:multiple =>true }, x.name, nil) %>
-						</li>
-					<% end %>	
-				</ul>
-				<%= form.submit 'Submit'%>
+
+
+			
+		<%= form_tag(learn_path(current_user.id), method:"post", remote: true) do %>
+English <%= check_box("learn", "languages", {:multiple => true}, "English", nil) %>
+Spanish <%= check_box("learn", "languages", {:multiple => true}, "Spanish", nil) %>
+Bahasa <%= check_box("learn", "languages", {:multiple => true}, "Bahasa", nil)%>
+
+			<%= submit_tag('Submit')%>
+
 			<% end %>
+
+
 		</div>
 	<% else %>
 		<div id="language-learn">
@@ -91,28 +63,6 @@
 	<h1>If you're ready, click here to start a chat!</h1>
 	<%= link_to 'Chat!', host_path%>
 </div>
-
-<div id="available-chat-list">
-<h1>List of available host</h1>
-	<ol>
-		<% @chats_available.each do |x| %>
-		<% b = User.find(x.host_id) %>
-		<li>
-		<%= link_to 'join chat', join_path(x.chat_session) %>, 
-		hosted by: <%= b.first_name %>,
-		speaks:
-			<% b.teach_languages.all.each do |z| %>
-			-<%= z.name %>
-			<% end %>
-		, interest:
-			<% b.interests.all.each do |y| %>
-			 -<%= y.name %>	
-			<% end %>
-		</li>
-		<% end %>
-	</ol>
-</div>
-
 	
 <% else %>
 <% end %>

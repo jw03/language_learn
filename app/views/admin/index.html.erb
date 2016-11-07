@@ -1,34 +1,38 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+
+<h1>Learners</h1>
 	<% @learn.each do |x| %>
+	<h2><%= x.name %></h2>
 <table class="table" id="learn">
 <tr>
-	<th>Language</th>
 	<th>Users</th>
 </tr>	
-
-
+<% x.users.all.each do |y| %>
 <tr>
-	<td><%= x.name%></td> 
-	<td><% x.users.all.each do |y| %>
-		
+	<td>
+		<%= y.id %> <%= y.first_name%> <%= y.last_name%>
 	</td>
 </tr>
-
+<% end %>
 </table>
 <% end %>
 
+<h1>Teachers</h1>
+	<% @teach.each do |x| %>
+	<h2><%= x.name %></h2>
 <table class="table" id="teach">
 <tr>
-	<th>Language</th>
+	<th>Users</th>
 </tr>	
-
-	<% @teach.each do |x| %>
+<% x.users.all.each do |y| %>
 <tr>
-	<td><%= x.name%></td> 
+	<td>
+		<%= y.id %> <%= y.first_name%> <%= y.last_name%>
+	</td>
 </tr>
 <% end %>
 </table>
+<% end %>
+
 
 
 

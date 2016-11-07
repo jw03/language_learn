@@ -7,10 +7,8 @@ class WelcomeController < ApplicationController
 	  	@languages = Language.all
 	  	@interests = Interest.all
 	  	@user = current_user
-	  	@teach_languages = current_user.teach_languages.all
-	  	@learn_languages = current_user.learn_languages.all
+	  	@learn_languages = current_user.learn_languages
 	  	@user_interest = current_user.interests.all
-      @chats_available = Chat.all.where.not(chat_session: nil).where(guest_id: nil)
 	  else
 	  end
   end

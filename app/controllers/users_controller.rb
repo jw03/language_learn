@@ -40,7 +40,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -56,27 +55,28 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      byebug
       if @user.update(user_params)
-        languages = params["user"]["teach_languages"]
-        if languages.nil?
-        else
-          @user.teach_languages.destroy_all
-          languages.each {|x| @user.teach_languages.create(name: x)} 
-        end
+        # languages = params["user"]["teach_languages"]
+        # if languages.nil?
+        # else
+        #   @user.teach_languages.destroy_all
+        #   languages.each {|x| @user.teach_languages.create(name: x)} 
+        # end
         
-        languages = params["user"]["learn_languages"]
-        if languages.nil?
-        else
-          @user.learn_languages.destroy_all
-          languages.each {|x| @user.learn_languages.create(name: x)} 
-        end
+        # languages = params["user"]["learn_languages"]
+        # if languages.nil?
+        # else
+        #   @user.learn_languages.destroy_all
+        #   languages.each {|x| @user.learn_languages.create(name: x)} 
+        # end
         
-        interests = params["user"]["interests"]
-        if interests.nil?
-        else
-          @user.interests.destroy_all
-          interests.each {|x| @user.interests.create(name: x)} 
-        end
+        # interests = params["user"]["interests"]
+        # if interests.nil?
+        # else
+        #   @user.interests.destroy_all
+        #   interests.each {|x| @user.interests.create(name: x)} 
+        # end
 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -126,6 +126,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       # @languages = Language.all.pluck(:name)
-      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, {avatars: []}, :learn_language)
+      params.require(:user).permit(:last_name, :first_name, :email, :age, :gender, {avatars: []})
     end
 end

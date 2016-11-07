@@ -19,6 +19,31 @@
 
 $brand-primary: #D90368;
 
+body {
+	padding-top: 90px;
+}
+
+label {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.panel-header {
+	border: 1px solid #ccc;
+	padding: 20px 20px;
+	h3 {
+		font-size: 20px;
+		margin: 0;
+	}
+}
+
+.panel-main {
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-top: 0;
+
+}
+
 // NAV ---- 
 
 .nav-wrapper {
@@ -27,6 +52,7 @@ $brand-primary: #D90368;
 	top: 0;
 	left: 0;
 	right: 0;
+	z-index: 10;
 }
 
 .navbar-brand {

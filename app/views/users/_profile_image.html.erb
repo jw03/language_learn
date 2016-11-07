@@ -1,0 +1,6 @@
+<strong>Image Profile:</strong>
+  <% if @user.avatars[0].nil? %>
+    <%= image_tag 'http://www.ccusersforum.org/images/user.png' , :align=> "middle",  class:"img-circle", :size => "180x180" %>
+  <% else %>
+    <%= image_tag(@user.avatars[0].url , :align=> "middle",  class:"img-circle", :size => "260x180")%>
+<% end %>

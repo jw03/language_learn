@@ -4,7 +4,6 @@
       <div class="col-md-4">
         <ul class="nav nav-stacked">
           <li class="active"><a href="#edit-profile" data-toggle="tab">Edit Profile</a></li>
-          <li><a href="#profile-image" data-toggle="tab">Photos</a></li>
           <li><a href="#conversations" data-toggle="tab">Conversation history</a></li>
           <li><a href="#languages-and-interests" data-toggle="tab">Languages</a></li>
           <li><a href="#coins" data-toggle="tab">Coins</a></li>
@@ -12,36 +11,49 @@
       </div>
 
       <div class="col-md-8">
-        <div class="panel-header">
-          <h3>Profile</h3>
-        </div>
-        <div class="tab-content panel-main">
-          <div class="tab-pane active" id="edit-profile">
-            <%= render template: 'users/edit' %>
-          </div>
-          <div class="tab-pane" id="languages-and-interests">
-            <p>
-              <strong>My Interests:</strong>
-              <% @user_interests.each do |x| %>
-              <li><%= x.name%></li>
-              <% end %>
-            </p>
-            <p>
-              <strong>I Speak:</strong>
-              <% @user_teach_languages.each do |x| %>
-              <li><%= x.name%></li>
-              <% end %>
-            </p>
-          </div>
-          <div class="tab-pane" id="coins">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <strong>Purchase Options</strong>
-                  <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
-              </li>
-            </ul>
-            <strong>Total Coins Purchased:</strong>
-            <%= @user.total_coins %>
+          <div class="tab-content">
+            <div class="tab-pane active" id="edit-profile">
+              <div class="panel-header">
+                <h3>Profile</h3>
+              </div>
+              <div class="panel-main">
+                <%= render template: 'users/edit' %>
+              </div>
+            </div>
+            <div class="tab-pane" id="languages-and-interests">
+              <div class="panel-header">
+                <h3>Languages and interests</h3>
+              </div>
+              <div class="panel-main">
+                <p>
+                  <strong>My Interests:</strong>
+                  <% @user_interests.each do |x| %>
+                  <li><%= x.name%></li>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>I Speak:</strong>
+                  <% @user_teach_languages.each do |x| %>
+                  <li><%= x.name%></li>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <div class="tab-pane" id="coins">
+              <div class="panel-header">
+                <h3>Coins</h3>
+              </div>
+              <div class="panel-main">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <strong>Purchase Options</strong>
+                      <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
+                  </li>
+                </ul>
+                <strong>Total Coins Purchased:</strong>
+                <%= @user.total_coins %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

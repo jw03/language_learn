@@ -4,15 +4,9 @@ class User < ApplicationRecord
   mount_uploaders :avatars, AvatarUploader
 
   has_many :authentications, :dependent => :destroy
-
-  has_many :interests, through: :user_interests
-  has_many :user_interests
-
-  has_many :teach_languages, through: :user_teach_languages
-  has_many :user_teach_languages
-
-  has_many :learn_languages, through: :user_learn_languages
-  has_many :user_learn_languages
+  has_and_belongs_to_many :interests
+  has_and_belongs_to_many :teach_languages
+  has_and_belongs_to_many :learn_languages
 
   validates :first_name, presence: true
   validates :last_name, presence: true

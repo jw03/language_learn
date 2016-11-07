@@ -1,4 +1,3 @@
 class TeachLanguage < ApplicationRecord
-has_many :users, through: :user_teach_languages
-has_many :user_teach_languages
+has_and_belongs_to_many :users
 end

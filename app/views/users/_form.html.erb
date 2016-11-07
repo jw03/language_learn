@@ -18,6 +18,7 @@
   <div class="password-field">
     <%= form.password_field :password,placeholder: "Password", :class => "input-full-width" %>
   </div>
+  <%= f.hidden_field :coins, :value => 100 %>
   <div class="submit-field">
     <%= form.submit :class => "input-full-width full-width-input-primary"%>
   </div>

@@ -28,6 +28,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <div id="clearance" class="sign-in">
+
           <%= render partial: '/sessions/form' %>
         </div>
       </div>
@@ -40,8 +41,14 @@
     <div class="modal-content">
       <div class="modal-body">
         <div id="clearance" class="sign-up">
-          <%= render partial: '/users/form' %>
-        </div>
+          <%= link_to "Signup with Facebook", '/auth/facebook', :class => "like-btn like-btn--fb" %>
+          <div class="signin-separator">
+            <span class="signin-separator--text">or</span>
+            <hr>
+          </div>
+          <%= form_for User.new do |form| %>
+          <%= render partial: '/users/form', object: form %>
+          <% end %>
       </div>
     </div>
   </div>

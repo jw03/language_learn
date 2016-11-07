@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   get '/newvidchat', to: 'streams#host', as: "host"
-  get '/vidchat/:session_id', to: 'streams#join', as: "join"
+  get '/room/:rid', to: 'streams#room', as: "room"
 
   root 'welcome#index'
 

@@ -1,7 +1,20 @@
 <h1>Editing User</h1>
 
 <%= form_for @user do |form| %>
-  <%= render partial: 'form', object: form %>
+
+ <div class="text-field">
+    <%= form.text_field :first_name, type: 'first_name', placeholder: "First name", :class => "input-full-width" %>
+  </div>
+  <div class="text-field">
+    <%= form.text_field :last_name, type: 'last_name',placeholder: "Last name", :class => "input-full-width" %>
+  </div>
+  <div class="text-field">
+    <%= form.text_field :email, type: 'email',placeholder: "Email", :class => "input-full-width" %>
+  </div>
+  <div class="password-field">
+    <%= form.password_field :password,placeholder: "Password", :class => "input-full-width" %>
+  </div>
+
 
  	<p>
 		<%= form.file_field :avatars, multiple: true %>
@@ -14,7 +27,7 @@
 	</p>
 
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit :class => "input-full-width full-width-input-primary"%>
   </div>
 
 <% end %>

@@ -1,0 +1,29 @@
+<h1>Admin#index</h1>
+<p>Find me in app/views/admin/index.html.erb</p>
+
+
+
+
+<table class="table">
+	<tr>
+		<th>id</th>
+		<th>guest</th>
+		<th>host</th>
+		<th>amount</th>
+		<th>session</th>
+		<th>is_paid</th>
+	</tr>
+	
+
+		<% @chats.each do |x| %>
+			<tr>
+				<td><%= x.id%></td>
+				<td><%= x.guest_id%></td>
+				<td><%= x.host_id%></td>
+				<td><%= x.amount%></td>
+				<td><%= x.chat_session%></td>
+				<td><%= x.is_paid%></td>
+			</tr>
+		<% end %>
+
+</table>

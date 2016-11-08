@@ -70,6 +70,11 @@ label {
 
 // NAV ---- 
 
+.nav-wrapper {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: -1px;
+}
+
 .nav-top .navbar-brand {
 	color: $brand-primary;
 	font-family: 'Londrina Solid', cursive;
@@ -119,9 +124,10 @@ label {
 .btn {
 	display: inline-block;
 	padding: 10px 25px;
-	background-color: $brand-primary;
+	background-color: $brand-secondary;
 	color: #fff;
 	text-decoration: none;
+	font-weight: 500;
 
 	&:hover {
 		text-decoration: none;
@@ -131,13 +137,12 @@ label {
 }
 
 .jumbotron {
-	background-color: #fff;
 	background-image: url('hero.jpg');
 	background-size: cover;
 	height: 100vh;
 	padding-top: 250px;
 	h2 {
-		color: #000;
+		color: #fff;
 	}
 }
 

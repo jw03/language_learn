@@ -23,9 +23,11 @@
     <div class="container">
       <div id="flash">
         <% flash.each do |key, value| %>
-          <div class="alert alert-success" role="alert">
-            <div class="flash <%= key %>"><%= value %></div>
-          </div>
+            <% if key = notice %>
+              <div class="alert alert-success" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <% elsif key = alert %>
+              <div class="alert alert-danger" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <%end %>
         <% end %>
       </div>
     </div>

@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.integer  "guest_id"
-    t.integer  "host_id"
-    t.integer  "amount"
-    t.string   "chat_session"
-    t.bit      "is_paid",      limit: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "interests", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false

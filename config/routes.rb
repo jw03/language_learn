@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
-  get '/newvidchat', to: 'streams#host', as: "host"
+  post '/room/:rid', to: 'streams#host', as: "host"
 
-  get '/room/:rid', to: 'streams#room', as: "room"
+  get '/room/:rid', to: 'streams#guest', as: "guest"
 
 
   root 'welcome#index'

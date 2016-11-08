@@ -56,49 +56,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
 
-        languages = params["user"]["teach_languages"]
-        if languages.nil?
-        else
-          languages.each do |x|
-            a = TeachLanguage.find_by(name:x)
-             if a.nil?
-             a = TeachLanguage.create(name:x)
-             @user.teach_languages << a
-             else
-              @user.teach_languages << a
-             end
-          end
-        end
-
-        languages = params["user"]["learn_languages"]
-        if languages.nil?
-        else
-          languages.each do |x|
-            a = LearnLanguage.find_by(name:x)
-             if a.nil?
-             a = LearnLanguage.create(name:x)
-             @user.learn_languages << a
-             else
-              @user.learn_languages << a
-             end
-          end
-         end 
-
-        interests = params["user"]["interests"]
-        if interests.nil?
-        else
-          interests.each do |x|
-            a = Interest.find_by(name:x)
-             if a.nil?
-             a = Interest.create(name:x)
-             @user.interests << a
-             else
-              @user.interests << a
-             end
-          end
-        end
-       
-
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -106,6 +63,48 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def preference
+    languages = Language.all
+    @user = current_user
+        languages_t = params["user"]["teach_languages"]
+
+        if languages_t.nil?
+        else
+
+              if TeachLanguage.find_by(name: languages_t).nil?
+              TeachLanguage.create(name: languages_t)
+              end
+              a = TeachLanguage.find_by(name: languages_t) 
+              a.users << @user
+        end
+
+        languages_l = params["user"]["learn_languages"]
+        if languages_l.nil?
+        else
+          
+              if LearnLanguage.find_by(name: languages_l).nil?
+              LearnLanguage.create(name: languages_l)
+              end
+              a = LearnLanguage.find_by(name: languages_l) 
+              a.users << @user
+         end 
+
+
+        interests = params["user"]["interests"]
+        if interests.nil?
+        else
+          
+              if Interest.find_by(name: interests).nil?
+              Interest.create(name: interests)
+              end
+              a = Interest.find_by(name: interests) 
+              a.users << @user
+        end
+       
+       redirect_to @user, notice: 'User was successfully updated.'
+    
   end
 
   # DELETE /users/1

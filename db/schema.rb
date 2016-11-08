@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.integer  "guest_id"
-    t.integer  "host_id"
-    t.integer  "amount"
-    t.string   "chat_session"
-    t.bit      "is_paid",      limit: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "interests", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -84,6 +74,10 @@ ActiveRecord::Schema.define(version: 20161103090949) do
   create_table "streams", force: :cascade do |t|
     t.string   "rid"
     t.string   "sid"
+    t.integer  "host_id"
+    t.integer  "guest_id"
+    t.string   "time_start"
+    t.string   "time_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -109,12 +103,12 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.string   "email"
     t.integer  "age"
     t.string   "gender"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.integer  "coins",                          default: 500
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.integer  "total_coins",                    default: 0
     t.json     "avatars"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree

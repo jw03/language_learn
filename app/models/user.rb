@@ -9,12 +9,12 @@ class User < ApplicationRecord
   has_and_belongs_to_many :teach_languages
   has_and_belongs_to_many :learn_languages
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :gender, presence: true
-  validates :age, numericality: { greater_than: 18, only_integer: true }
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :gender, presence: true
+  # validates :age, numericality: { greater_than: 18, only_integer: true }
 
-  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, presence: true
+  # validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, presence: true
 
 
   def self.create_with_auth_and_hash(authentication,auth_hash)

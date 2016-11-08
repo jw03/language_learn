@@ -21,14 +21,17 @@
 	<%= f.label :first_name %>
   <%= f.text_field :first_name, class: 'input-full-width' %>
 
+
   <%= f.label :last_name %>
   <%= f.text_field :last_name, class: 'input-full-width' %>
+
 
   <%= f.label :email %>
   <%= f.text_field :email, class: 'input-full-width' %>
 
   <%= f.label :age %>
   <%= f.text_field :age, class: 'input-full-width' %>
+
 
   <div class="radio-gender">
     <%= f.label :gender %>
@@ -38,6 +41,7 @@
       <%= radio_button("user", "gender", "Female") %>
       <%= label_tag(:gender, "Female") %>
     </div>
+
   </div>
 
   <%= f.submit class: 'input-full-width full-width-input-primary' %>

@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   mount_uploaders :avatars, AvatarUploader
 
+  has_many :payments
   has_many :authentications, :dependent => :destroy
   has_and_belongs_to_many :interests
   has_and_belongs_to_many :teach_languages
@@ -39,5 +40,9 @@ class User < ApplicationRecord
     true
   end
 
+
+def online?
+  updated_at > 5.minutes.ago
+end
 
 end

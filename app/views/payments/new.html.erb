@@ -2,19 +2,17 @@
 
 <%= form_for(@payment) do |f| %>
 
-
-
   <div class="lead">
     <%= f.label :Total %><br>
-    <span class="label label-warning">RM <%= @chat.amount %> </span>
+    <span class="label label-warning">RM 100</span>
   </div>
 
   <div class="field">
-    <%= f.hidden_field :chat_id, value: @chat.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="field">
-    <%= f.hidden_field :total_price, value: @chat.amount %>
+    <%= f.hidden_field :total_price, value: 100%>
   </div>
 
   <div class="field">

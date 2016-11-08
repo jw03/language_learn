@@ -1,7 +1,8 @@
 class CreatePayments < ActiveRecord::Migration[5.0]
   def change
     create_table :payments do |t|
-    	t.references :chat, index: true
+    	t.references :user, index: true
+    	t.integer :amount
       t.string :braintree_payment_id
       t.string :status
       t.string :fourdigit

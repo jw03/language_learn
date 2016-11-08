@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 			  <%= form_tag("/room/#{current_user.first_name}", method: "post") do %>
-			  <div class="large-btn">
+			  <div class="large-btn bg-secondary">
 			  	<h1 class="text-center">Host a chat!</h1>
 					<p class="text-center">When hosting a chat you will earn coins to spend at a later date. When hosting, please speak in your native language</p>
 					<%= hidden_field_tag(:host, current_user.id) %>
@@ -20,19 +20,35 @@
 		</div>
 
 		<div id="potential-match">
-			<h2>Online users that match your language needs:</h2>
+			<div class="row">
 				<% unless @users.nil? %>
-					<ul>	
-						<% @users.each do |x| %>
-						<li><%= x.email%></li>
-						<%= form_tag("/room/#{x.first_name}", method: "get") do %>
-						<%= hidden_field_tag(:guest, current_user.id) %>
-						<%= hidden_field_tag(:start, Time.now) %>
-		  			<%= submit_tag("Join") %>
-							<% end %>
-						<% end %>		
-					</ul>
-					<% end %>
+					<% @users.each do |x| %>
+						<div class="col-md-6">
+							<div class="large-btn bg-primary">
+								<div class="row">
+									<div class="col-md-3">
+										<% if x.avatars[0].nil? %>
+											<div class="profile-img-placeholder--small">
+				      				</div>
+				      			<% else %>
+											<%= image_tag x.avatars[0].url, :size => "90x90", :class => "profile-img" %>
+										<% end %>
+									</div>
+									<div class="col-md-9">
+										<p class="large-btn--join">Speak with <%= x.first_name %></p>
+										<p class="large-btn--join">Age <%= x.age %></p>
+										<%= form_tag("/room/#{x.first_name}", method: "get") do %>
+											<%= hidden_field_tag(:guest, current_user.id) %>
+											<%= hidden_field_tag(:start, Time.now) %>
+							  			<%= submit_tag("Join", :class => "large-btn-cover") %>
+										<% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>		
+				<% end %>
+			</div>
 		</div>
 	</div>
 

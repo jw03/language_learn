@@ -141,6 +141,7 @@ label {
 	background-size: cover;
 	height: 100vh;
 	padding-top: 250px;
+	margin-bottom: 0;
 	h2 {
 		color: #fff;
 	}
@@ -150,6 +151,15 @@ label {
 	width: 120px;
 	margin: auto;
 }
+
+.about-section {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.hero {
+	background-color: #eee;
+}	
 
 
 // Modal -------

@@ -7,6 +7,7 @@ class CreateStreams < ActiveRecord::Migration[5.0]
     	t.integer :guest_id
     	t.string :time_start
     	t.string :time_end
+      t.integer :amount
       t.timestamps
     end
   end

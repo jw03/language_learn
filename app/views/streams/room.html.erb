@@ -34,7 +34,6 @@
       </div>
         <div id="recordButton" data-tooltip-title="hangup" class="controlOption option"data-activity="record">
         <%= form_tag(summary_path) do %>
-          <%= hidden_field_tag(:time_end, Time.now)%>
           <%= hidden_field_tag(:rid, rid)%>
           <%= submit_tag("end", :class => "hangup")  %>
         <%end%>

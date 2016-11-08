@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.integer  "guest_id"
     t.string   "time_start"
     t.string   "time_end"
+    t.integer  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

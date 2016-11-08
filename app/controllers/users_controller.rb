@@ -68,8 +68,11 @@ class UsersController < ApplicationController
               @user.teach_languages << a
              end
           end
+        end
 
-          languages = params["user"]["learn_languages"]
+        languages = params["user"]["learn_languages"]
+        if languages.nil?
+        else
           languages.each do |x|
             a = LearnLanguage.find_by(name:x)
              if a.nil?
@@ -79,8 +82,11 @@ class UsersController < ApplicationController
               @user.learn_languages << a
              end
           end
-          
-          interests = params["user"]["interests"]
+         end 
+
+        interests = params["user"]["interests"]
+        if interests.nil?
+        else
           interests.each do |x|
             a = Interest.find_by(name:x)
              if a.nil?
@@ -91,6 +97,7 @@ class UsersController < ApplicationController
              end
           end
         end
+       
 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }

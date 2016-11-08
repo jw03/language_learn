@@ -7,34 +7,8 @@
 				
 		</div>
 	<% else %>
-	 <!-- end for if language to teach is nil -->
+	 
 
-<div class="done">
-<div id="language-teach">
-			<h1>You're good at speaking:</h1>
-			<ol>
-				<% @teach_languages.each do |x| %>
-					<li><%= x.name%></li>
-				<% end %>
-			</ol>
-		</div>
-		<div id="language-learn">
-			<h1>You want to learn:</h1>
-			<ol>
-				<% @learn_languages.each do |x| %>
-					<li><%= x.name%></li>
-				<% end %>
-			</ol>
-		</div>
-		<div id="user-interest">
-			<h1>Your interest are:</h1>
-			<ol>
-				<% @user_interest.each do |x| %>
-					<li><%= x.name%></li>
-				<% end %>
-			</ol>
-		</div>
-</div>
 	<% end %>
 
 

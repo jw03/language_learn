@@ -21,8 +21,7 @@ class PaymentsController < ApplicationController
     if @result.success?
       Payment.create(user_id: params[:payment][:user_id], braintree_payment_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4, amount: amount)
         a = User.find(params[:payment][:user_id])
-        b = Payment.where(user_id: params[:payment][:user_id])
-        a.update(total_coins: b.sum(:amount)) 
+        a.update(total_coins: a.payments.sum(:amount)) 
         redirect_to user_path(id: current_user.id), notice: "Congratulations! Your transaction is successful!"
     else
         Payment.create(user_id: params[:payment][:user_id], braintree_transaction_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4)

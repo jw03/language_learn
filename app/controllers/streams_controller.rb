@@ -43,15 +43,15 @@ class StreamsController < ApplicationController
 
 
   def summary
-  	time_end = params[:time_end]
+  	tend = params[:time_end]
   	rid = params[:rid]
   	@stream = Stream.find_by(rid: rid)
     if @stream.guest_id == nil
       render :summary
     else
-    	@stream.update(time_end: time_end)
+    	@stream.update(time_end: tend)
     	@stream.save!
-    	@duration = (DateTime.strptime(@stream.time_end,  '%Y-%m-%d %H:%M:%S %z')) - (DateTime.strptime(@stream.time_start,  '%Y-%m-%d %H:%M:%S %z'))
+    	@duration = (((Time.strptime(@stream.time_end,  '%Y-%m-%d %H:%M:%S %z')) - (Time.strptime(@stream.time_start,  '%Y-%m-%d %H:%M:%S %z')))
     	@amount = (@duration.seconds) * 10
     	@earner = User.find(@stream.host_id)
     	@spender = User.find(@stream.guest_id)

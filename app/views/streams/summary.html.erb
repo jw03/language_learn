@@ -1,15 +1,16 @@
- <div class="container">
-  <div class="panel-header">
-  <h3>Summary</h3>
-  </div>
-
- <%if current_user.id == @stream.guest_id %> 
- <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> seconds. </h1>
- <h2> Coins Spent: <%=@amount%> </h2>
- <h2> Balance: <%=@spender.total_coins%> </h2>
- <%elsif current_user.id == @stream.host_id%>
-<h1> You have talked to <%=@spender.first_name %> for the last <%=@duration%> </h1>
- <h2> Coins Earned: <%=@amount%> </h2>
-<h2> Balance: <%=@earner.total_coins%> </h2>
- <%end%>
+<div class="container">
+	<div class="panel-header">
+		<h3>Summary</h3>
+	</div>
+		<div class="panel-main">
+		<%if current_user.id == @stream.guest_id %> 
+			<h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> seconds. </h1>
+			<h2> Coins Spent: <%=@amount%> </h2>
+			<h2> Balance: <%=@spender.total_coins%> </h2>
+		<%elsif current_user.id == @stream.host_id%>
+			<h1> You have talked to <%=@spender.first_name %> for the last <%=@duration%> </h1>
+			<h2> Coins Earned: <%=@amount%> </h2>
+			<h2> Balance: <%=@earner.total_coins%> </h2>
+		<%end%>
+		</div>
 </div>

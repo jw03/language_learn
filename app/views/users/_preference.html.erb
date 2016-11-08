@@ -1,35 +1,45 @@
-<%= form_for @user, url: preference_path(current_user.id)  do |form| %>
-						 <h1>What language you speak best?</h1>
-		 <p>We still don't know what language you're good at. Check one of the following that you're good at.</p>
-					<ul>
-						<% @languages.each do |x| %>
-							<li>
-								<%= x.name %> 
-								<%= radio_button("user", "teach_languages", x.name) %>
-							</li>
-						<!-- end for do each -->
-						<% end %>	
-					</ul>
-					<h1>What language you want to learn?</h1>
+<div class="container">
+	<%= form_for @user, url: preference_path(current_user.id)  do |form| %>
+		<h2>Almost there</h2>
+		<div class="signup-choice">
+			<p>Please complete the following information so we can match you with people worldwide</p>
+			<p class="signup-choice--heading">What is your native language</p>
+			<p>We still don't know what language you're good at. Check one of the following that you're good at.</p>
+			<ul>
+				<% @languages.each do |x| %>
+					<li>
+						<%= x.name %> 
+						<%= radio_button("user", "teach_languages", x.name) %>
+					</li>
+				<!-- end for do each -->
+				<% end %>	
+			</ul>
+		</div>
+		<div class="signup-choice">
+			<p class="signup-choice--heading">What languages are you learning?</p>
 			<p>We still don't know what language you want to learn. Check one of the following languages that you want to learn.</p>
-					<ul>
-					<% @languages.each do |x| %>
-						<li>
-							<%= x.name %> 
-								<%= radio_button("user", "learn_languages", x.name) %>
-						</li>
-					<% end %>	
-				</ul>
-				<h1>What interest you?</h1>
+			<ul>
+				<% @languages.each do |x| %>
+					<li>
+						<%= x.name %> 
+							<%= radio_button("user", "learn_languages", x.name) %>
+					</li>
+				<% end %>	
+			</ul>
+		</div>
+		<div class="signup-choice">
+			<p class="signup-choice--heading">Please select some of the following interests</p>
 			<p>Tick the following interest so that we can pair you up with people of similar interest!</p>
-				<ul>
-					<% @interests.each do |x| %>
-						<li>
-							<%= x.name %> 
-								<%= radio_button("user", "interests", x.name) %>
-						</li>
-					<% end %>	
-				</ul>
-					<%= form.submit 'Submit'%>
-				<!-- end for form -->
-				<% end %>
+			<ul>
+				<% @interests.each do |x| %>
+					<li>
+						<%= x.name %> 
+							<%= radio_button("user", "interests", x.name) %>
+					</li>
+				<% end %>	
+			</ul>
+		</div>
+		<%= form.submit 'Submit'%>
+		<!-- end for form -->
+	<% end %>
+</div>

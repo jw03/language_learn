@@ -199,6 +199,20 @@ label {
 	padding-bottom: 8px;
 }
 
+.signup-choice {
+	padding: 30px;
+	margin-bottom: 15px;
+	background-color: #eee;
+}
+
+.signup-choice--heading {
+	color: $brand-secondary;
+	font-size: 20px;
+	font-weight: 500;
+
+}
+
+
 .input-form	{
 	margin-top: 40px;
 }
@@ -225,7 +239,11 @@ label {
 	padding-bottom: 10px;
 }
 
-
+.hangup	{
+	opacity: 0;
+	height: 80px;
+	width: 80px;
+}
 
 @media (min-width: 768px) {
 	.modal-md {

@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
     @user_learn_languages = current_user.learn_languages
 
+    @chats_join = Stream.all.where(guest_id:current_user.id)
+    @chats_host = Stream.all.where(host_id:current_user.id)
   end
 
   # GET /users/new

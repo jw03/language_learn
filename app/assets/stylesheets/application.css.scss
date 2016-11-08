@@ -23,11 +23,7 @@ $brand-primary: #44CF6C;
 $brand-secondary: #B4436C;
 $text: #666;
 
-// .opentok-container {
-// 	.container {
-// 		margin-top: 100px;
-// 	}
-// }
+
 
 // helpers ------
 
@@ -225,7 +221,28 @@ label {
 	padding-bottom: 10px;
 }
 
+.footer {
+	background-color: #555;
+	color: #fff;
+	width: 100%;
+	bottom: 0;
+}
 
+.footer-nav ul {
+	padding: 20px 0;
+	list-style: none;
+	.footer-link {
+		display: inline-block;
+		padding-right: 20px;
+		a {
+		color: #fff;
+			&:hover {
+				text-decoration: none;
+				color: $brand-secondary;
+			}
+		}
+	}
+}
 
 @media (min-width: 768px) {
 	.modal-md {

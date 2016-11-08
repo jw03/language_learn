@@ -59,7 +59,6 @@ Room.prototype = {
     session.on("sessionDisconnected", function(event){
       var msg = (event.reason === "forceDisconnected") ? "Someone in the room found you offensive and removed you. Please evaluate your behavior" : "You have been disconnected! Please try again";
       alert(msg);
-      window.location = "/";
     });
     session.on("streamCreated", function(event){
       var streamConnectionId = event.stream.connection.connectionId;

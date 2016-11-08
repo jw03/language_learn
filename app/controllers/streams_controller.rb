@@ -42,19 +42,23 @@ class StreamsController < ApplicationController
   end
 
 
-  def endstream
+  def summary
   	time_end = params[:time_end]
   	rid = params[:rid]
   	@stream = Stream.find_by(rid: rid)
-  	@stream.update(time_end: time_end)
-  	@stream.save!
-  	@duration = (@stream.time_end - @stream.time_start)
-  	@amount = @duration.min * 10
-  	@earner = User.find_by(@stream.host_id)
-  	@spender = User.find_by(@stream.guest_id)
-  	@earner.update(total_coins: (@earner.total_coins+@amount))
-  	@spender.update(total_coins: (@spender.total_coins-@amount))
+    if @stream.guest_id == nil
+      render :summary
+    else
+    	@stream.update(time_end: time_end)
+    	@stream.save!
+    	@duration = (@stream.time_end - @stream.time_start)
+    	@amount = @duration.min * 10
+    	@earner = User.find_by(@stream.host_id)
+    	@spender = User.find_by(@stream.guest_id)
+    	@earner.update(total_coins: (@earner.total_coins+@amount))
+    	@spender.update(total_coins: (@spender.total_coins-@amount))
   	render :summary
+    end
   end
   
 end

@@ -129,8 +129,8 @@ h1, h2, h3, h4, h5, h6, p {
         background-image: url("../img/filters-icon-active.png"); }
       #controlsContainer .controlsBody .optionContainer #filtersButton.selected {
         background-image: url("../img/filters-icon-active.png"); }
-    #controlsContainer .controlsBody .optionContainer #record {
-      background-image: url("../img/hangup.png");
+    #controlsContainer .controlsBody .optionContainer #recordButton {
+      background-image: url("../img/img-archiving_normal-icon.png");
       width: 27px;
       height: 27px;
       right: 85px; }

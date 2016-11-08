@@ -136,8 +136,6 @@ h1, h2, h3, h4, h5, h6, p {
       right: 85px; }
       #controlsContainer .controlsBody .optionContainer #recordButton:hover {
         background-image: url("../img/img-archiving_hover-icon.png"); }
-      #controlsContainer .controlsBody .optionContainer #recordButton.selected {
-        background-image: url("../img/img-archiving_active-icon.png"); }
     #controlsContainer .controlsBody .optionContainer #roomLinkButton {
       background-image: url("../img/img-link_normal-icon.png");
       width: 28px;

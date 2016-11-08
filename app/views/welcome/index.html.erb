@@ -41,7 +41,10 @@
 
 <div id="host-a-chat">
 	<h1>If you're ready, click here to start a chat!</h1>
-	<%= link_to 'Chat!', host_path%>
+		<%= form_tag("/room/#{current_user.first_name}", method: "post") do %>
+		<%= hidden_field_tag(:host, current_user.id) %>
+	  <%= submit_tag("Host") %>
+	  <% end %>
 </div>
 
 <div id="potential-match">
@@ -50,6 +53,11 @@
 			<ul>	
 				<% @users.each do |x| %>
 				<li><%= x.email%></li>
+				<%= form_tag("/room/#{x.first_name}", method: "get") do %>
+				<%= hidden_field_tag(:guest, current_user.id) %>
+				<%= hidden_field_tag(:start, Time.now) %>
+  			<%= submit_tag("Join") %>
+					<% end %>
 				<% end %>		
 			</ul>
 			<% end %>

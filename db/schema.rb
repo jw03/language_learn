@@ -71,13 +71,14 @@ ActiveRecord::Schema.define(version: 20161103090949) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.integer  "amount"
     t.string   "braintree_payment_id"
     t.string   "status"
     t.string   "fourdigit"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["chat_id"], name: "index_payments_on_chat_id", using: :btree
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "streams", force: :cascade do |t|
@@ -108,12 +109,12 @@ ActiveRecord::Schema.define(version: 20161103090949) do
     t.string   "email"
     t.integer  "age"
     t.string   "gender"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.integer  "total_coins"
+    t.integer  "total_coins",                    default: 0
     t.json     "avatars"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree

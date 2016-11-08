@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   def index
   	@chats = Chat.all
-  	@learn = LearnLanguages.all
-  	@teach = TeachLanguages.all
+  	@learn = LearnLanguage.all
+  	@teach = TeachLanguage.all
   end
 end

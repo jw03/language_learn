@@ -8,8 +8,9 @@
       <div>
         <%= image_tag (@user.avatars[0].url), :size => "180x180" %>
       </div>
+      <% end %>
     </div>
-    <% end %>
+    
     <div class="col-sm-8">
       <p class="profile-img-spacer">
         Upload an image of yourself so other users can see what you look like. Click the choose file button and pick an image.
@@ -20,14 +21,17 @@
 	<%= f.label :first_name %>
   <%= f.text_field :first_name, class: 'input-full-width' %>
 
+
   <%= f.label :last_name %>
   <%= f.text_field :last_name, class: 'input-full-width' %>
+
 
   <%= f.label :email %>
   <%= f.text_field :email, class: 'input-full-width' %>
 
   <%= f.label :age %>
   <%= f.text_field :age, class: 'input-full-width' %>
+
 
   <div class="radio-gender">
     <%= f.label :gender %>
@@ -37,6 +41,7 @@
       <%= radio_button("user", "gender", "Female") %>
       <%= label_tag(:gender, "Female") %>
     </div>
+
   </div>
 
   <%= f.submit class: 'input-full-width full-width-input-primary' %>

@@ -12,8 +12,6 @@ class UsersController < ApplicationController
   def show
     @user = current_user
 
-    @chat = Chat.new(host_id: current_user.id, amount:100, is_paid: 0)
-
     @user_interests = current_user.interests.all
 
     @user_teach_languages = current_user.teach_languages
@@ -58,24 +56,37 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         languages = params["user"]["teach_languages"]
-        if languages.nil?
-        else
-          @user.teach_languages.destroy_all
-          languages.each {|x| @user.teach_languages.create(name: x)} 
+        languages.each do |x|
+          a = TeachLanguage.find_by(name:x)
+           if a.nil?
+           a = TeachLanguage.create(name:x)
+           @user.teach_languages << a
+           else
+            @user.teach_languages << a
+           end
         end
-        
+
+
         languages = params["user"]["learn_languages"]
-        if languages.nil?
-        else
-          @user.learn_languages.destroy_all
-          languages.each {|x| @user.learn_languages.create(name: x)} 
+        languages.each do |x|
+          a = LearnLanguage.find_by(name:x)
+           if a.nil?
+           a = LearnLanguage.create(name:x)
+           @user.learn_languages << a
+           else
+            @user.learn_languages << a
+           end
         end
         
         interests = params["user"]["interests"]
-        if interests.nil?
-        else
-          @user.interests.destroy_all
-          interests.each {|x| @user.interests.create(name: x)} 
+        interests.each do |x|
+          a = Interest.find_by(name:x)
+           if a.nil?
+           a = Interest.create(name:x)
+           @user.interests << a
+           else
+            @user.interests << a
+           end
         end
 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

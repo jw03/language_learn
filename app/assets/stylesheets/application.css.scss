@@ -70,6 +70,11 @@ label {
 
 // NAV ---- 
 
+.nav-wrapper {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: -1px;
+}
+
 .nav-top .navbar-brand {
 	color: $brand-primary;
 	font-family: 'Londrina Solid', cursive;

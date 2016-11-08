@@ -32,20 +32,6 @@ Room.prototype = {
     $('#chatInput').keyup(function(e){
       if(e.keyCode == 27){$('#chatButton').trigger('click');}
     });
-    $("#recordButton").click(function(){
-      $(this).toggleClass("selected");
-      var actionVerb, nextAction;
-      if($(this).hasClass("selected")){
-        self.triggerActivity("record","start");
-        actionVerb = "started";
-        nextAction = "Stop";
-      } else{ 
-        self.triggerActivity("record","stop");
-        actionVerb = "stopped";
-        nextAction = "Start";
-      }
-      $("#recordButton").data('tooltip').options.title=nextAction+" Recording";
-    });
     $(document.body).on("click","#filtersList li button",function(){
       $("#filtersList li button").removeClass("selected");
       var prop = $(this).data('value');

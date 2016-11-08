@@ -30,6 +30,12 @@
       <a href= "mailto:langlearn@langlearn.com?subject=chat%20Feedback" id="mailButton" data-tooltip-title="Send Feedback!" class="controlOption option">
       </a>
       <div id="filtersButton" data-tooltip-title = "Filters" class="controlOption option popover-dismiss" data-toggle="popover" data-placement="top" data-html="true" title="Filters" data-content="<ul id='filtersList'><li><button data-value='Sepia' type='button'>Sepia</button></li><li><button data-value='Invert' type='button'>Inverted</button></li><li><button data-value='Grayscale' type='button'>Grayscale</button></li><li><button data-value='Blur' type='button'>Blur</button></li><li><button data-value='None' type='button'>None</button></li></ul>"></div>
+      <div id="record" data-tooltip-title="Start Recording" class="controlOption option"data-activity="record">
+              <%= form_tag("/room/summary", method: "post") do %>
+        <%= hidden_field_tag(:time_end, Time.now) %>
+        <%= hidden_field_tag(:rid, @stream.rid) %>
+        <%= submit_tag("End Call") %>
+      </div> 
       <div id="roomLinkButton" data-tooltip-title="Share Room Link!" title="Share Room Link!" class="controlOption option popover-dismiss" data-placement="top"  data-activity="roomLink">
       </div>
       <div id="chatButton" data-tooltip-title="Text Chat" class="controlOption option no-after" data-activity="chat">

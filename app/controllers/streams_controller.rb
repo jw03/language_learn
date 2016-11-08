@@ -11,6 +11,8 @@ class StreamsController < ApplicationController
   	else
   		router = @opentok.create_session :archive_mode => :always,:media_mode => :routed
   		sid = router.session_id
+      @stream = Stream.new(rid: rid,sid: sid, host_id: params[:host])
+      @stream.save!
   		token = @opentok.generate_token(sid)
   	end
     render :room, :locals => {
@@ -22,7 +24,6 @@ class StreamsController < ApplicationController
   end
 
   def guest
-    hid = params[:host]
     gid = params[:guest]
     start= params[:start]
     rid = params[:rid]
@@ -30,8 +31,7 @@ class StreamsController < ApplicationController
     @opentok= OpenTok::OpenTok.new(apiKey, ENV["API_SECRET"])
     @stream = Stream.find_by(rid: rid)
       sid = @stream.sid
-      @stream = Stream.new(rid: rid,sid: sid,host_id: hid, guest_id: gid, time_start: start)
-      @stream.save!
+      @stream.update(guest_id: gid, time_start: start)
       token = @opentok.generate_token(sid)
     render :room, :locals => {
       :apiKey => apiKey,
@@ -53,10 +53,8 @@ class StreamsController < ApplicationController
   	@earner = User.find_by(@stream.host_id)
   	@spender = User.find_by(@stream.guest_id)
   	@earner.update(total_coins: (@earner.total_coins+@amount))
-  	@earner.save!
   	@spender.update(total_coins: (@spender.total_coins-@amount))
-  	@spender.save!
-  	render :summary_page
+  	render :summary
   end
   
 end

@@ -1,0 +1,9 @@
+<%if current_user == @stream.guest_id %> 
+<h1> You have talked to <%=@stream.host_id.first_name %> for the last <%=duration%> </h1>
+<h2> Coins Spent: <%=amount%> </h2>
+<h2> Balance: <%=@spender.total_coins%> </h2>
+<%else%>
+<h1> You have talked to <%=@stream.guest_id.first_name %> for the last <%=duration%> </h1>
+<h2> Coins Earned: <%=amount%> </h2>
+<h2> Balance: <%=@earner.total_coins%> </h2>
+<%end%>

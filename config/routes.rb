@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   get '/room/:rid', to: 'streams#guest', as: "guest"
 
+  get '/room/summary', to: 'streams#summary', as:"summary"
+
 
   root 'welcome#index'
 

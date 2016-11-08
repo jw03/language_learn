@@ -20,13 +20,17 @@
   <body>
 
     <%= render partial: '/layouts/navigation' %>
-    
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
+    <div class="container">
+      <div id="flash">
+        <% flash.each do |key, value| %>
+            <% if key = notice %>
+              <div class="alert alert-success" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <% elsif key = alert %>
+              <div class="alert alert-danger" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <%end %>
+        <% end %>
+      </div>
     </div>
-
     <%= yield %>
 
 

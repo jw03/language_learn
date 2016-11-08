@@ -1,33 +1,40 @@
-<h2>Payment Page</h2>
 
-<%= form_for(@payment) do |f| %>
-
-  <div class="lead">
-    <%= f.label :Total %><br>
-    <span class="label label-warning">RM 100</span>
+<div class="container">
+  <div class="panel-header">
+  <h3>Payment Page</h3>
   </div>
+    <div class="panel-main">
+    <%= form_for(@payment) do |f| %>
 
-  <div class="field">
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  </div>
+      <div class="lead">
+        <%= f.label :Total %><br>
+        <span class="label label-warning">RM 100</span>
+      </div>
 
-  <div class="field">
-    <%= f.hidden_field :total_price, value: 100%>
-  </div>
+      <div class="field">
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      </div>
 
-  <div class="field">
-    <div id="dropin"></div>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit "Pay Now", class: "btn btn-danger"%>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.hidden_field :total_price, value: 100%>
+      </div>
+
+      <div class="field">
+        <div id="dropin"></div>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Pay Now", class: "btn btn-danger"%>
+      </div>
+    <% end %>
 
 
-<script src="https://js.braintreegateway.com/js/braintree-2.22.2.min.js"></script>
-<script>
- braintree.setup("<%=@client_token%>", "dropin", {
-   container: "dropin"
- });
-</script>
+    <script src="https://js.braintreegateway.com/js/braintree-2.22.2.min.js"></script>
+    <script>
+     braintree.setup("<%=@client_token%>", "dropin", {
+       container: "dropin"
+     });
+    </script>
+    </div>
+
+</div>

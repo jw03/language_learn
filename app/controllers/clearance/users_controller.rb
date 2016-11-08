@@ -21,7 +21,7 @@ class Clearance::UsersController < Clearance::BaseController
       sign_in @user
       redirect_back_or url_after_create
     else
-
+      redirect_back
       render template: "users/new"
     end
   end

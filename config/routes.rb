@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  patch 'users/:user_id/preference', to: 'users#preference',  as: "preference"
+
   get 'admin/index'
 
- get 'payments/new', as: "new_payment"
+  get 'payments/new', as: "new_payment"
 
   post 'payments/create', as: "payments"
 

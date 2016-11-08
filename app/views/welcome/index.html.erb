@@ -79,7 +79,16 @@
 	<%= link_to 'Chat!', host_path%>
 </div>
 
-
+<div id="potential-match">
+	<h2>Online users that match your language needs:</h2>
+		<% unless @users.nil? %>
+			<ul>	
+				<% @users.each do |x| %>
+				<li><%= x.email%></li>
+				<% end %>		
+			</ul>
+			<% end %>
+</div>
 	
 <% else %>
   <div class="jumbotron">

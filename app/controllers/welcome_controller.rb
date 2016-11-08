@@ -20,7 +20,7 @@ class WelcomeController < ApplicationController
 	  	unless a.nil?
 		  	a.users.each do |x|
 		  		@users = []
-		  		if x.online?
+		  		if x.online? && Stream.all.find_by(host_id: x.id) != nil
 		  			@users << x 
 		  		end
 		  	end

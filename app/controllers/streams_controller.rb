@@ -51,10 +51,10 @@ class StreamsController < ApplicationController
     else
     	@stream.update(time_end: time_end)
     	@stream.save!
-    	@duration = (@stream.time_end - @stream.time_start)
-    	@amount = @duration.min * 10
-    	@earner = User.find_by(@stream.host_id)
-    	@spender = User.find_by(@stream.guest_id)
+    	@duration = (DateTime.strptime(@stream.time_end,  '%Y-%m-%d %H:%M:%S %z')) - (DateTime.strptime(@stream.time_start,  '%Y-%m-%d %H:%M:%S %z'))
+    	@amount = (@duration.seconds) * 10
+    	@earner = User.find(@stream.host_id)
+    	@spender = User.find(@stream.guest_id)
     	@earner.update(total_coins: (@earner.total_coins+@amount))
     	@spender.update(total_coins: (@spender.total_coins-@amount))
   	render :summary

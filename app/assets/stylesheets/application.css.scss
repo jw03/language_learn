@@ -44,6 +44,10 @@ label {
 	margin-bottom: 0;
 }
 
+.brand-heading {
+	color: $brand-secondary;
+}
+
 .panel-header {
 	border: 1px solid #ccc;
 	padding: 20px 20px;
@@ -209,7 +213,15 @@ label {
 	color: $brand-secondary;
 	font-size: 20px;
 	font-weight: 500;
+}
 
+.signup-choice--list {
+	list-style: none;
+	padding-left: 0;
+	li {
+		display: inline-block;
+		padding-right: 15px;
+	}
 }
 
 

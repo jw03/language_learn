@@ -45,7 +45,6 @@ class StreamsController < ApplicationController
   def summary
   	time_end = params[:time_end]
   	rid = params[:rid]
-    byebug
   	@stream = Stream.find_by(rid: rid)
     if @stream.guest_id == nil
       render :summary

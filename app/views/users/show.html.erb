@@ -52,7 +52,7 @@
               <div class="panel-main">
                 <p>Coins are used when you join a chat as a student. You can earn coins by hosting calls to help out the community, or you can buy coins and start chatting in the language you are learning.</p>
                 <p>Top up your coins by picking from the options below</p>
-                <%= link_to 'Buy 100 Coins Now' , new_payment_path(@chat.id), class: "btn btn-warning"  %>
+                <%= link_to 'Buy 100 Coins Now' , new_payment_path(current_user.id), class: "btn btn-warning"  %>
                 <p class="padding-top--sm">You currently have <span><%= @user.total_coins %></span> coins remaining</p>     
               </div>
             </div>

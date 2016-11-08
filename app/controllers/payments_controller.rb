@@ -4,9 +4,6 @@ class PaymentsController < ApplicationController
 
   def new
     @client_token = Braintree::ClientToken.generate
-    @chat = Chat.where(host_id:current_user.id, is_paid:0)
-    @chat.destroy_all
-     @chat = Chat.create(host_id: current_user.id, amount:100, is_paid: 0)
     @payment = Payment.new
   end
 
@@ -22,23 +19,15 @@ class PaymentsController < ApplicationController
     )
 
     if @result.success?
-      Payment.create(chat_id: params[:payment][:chat_id], braintree_payment_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4)
-
-      @chat = Chat.find(params[:payment][:chat_id])
-      	if @chat.payments.count == 0
-      	else
-      		@chat.update(is_paid:"1")
-          @host = User.find(@chat.host_id)
-          b = Chat.where(host_id: @chat.host_id, is_paid:1).pluck(:amount)
-          @host.update(total_coins: b.inject(:+))
-      	end
-
+      Payment.create(user_id: params[:payment][:user_id], braintree_payment_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4, amount: amount)
+        a = User.find(params[:payment][:user_id])
+        b = Payment.where(user_id: params[:payment][:user_id])
+        a.update(total_coins: b.sum(:amount)) 
         redirect_to user_path(id: current_user.id), notice: "Congratulations! Your transaction is successful!"
     else
-        Payment.create(chat_id: params[:payment][:chat_id], braintree_transaction_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4)
+        Payment.create(user_id: params[:payment][:user_id], braintree_transaction_id: @result.transaction.id, status: @result.transaction.status, fourdigit: @result.transaction.credit_card_details.last_4)
         flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
         @client_token = Braintree::ClientToken.generate
-        @chat = Chat.find(params[:payment][:chat_id])
         @payment = Payment.new
         render :new
     end

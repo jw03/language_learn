@@ -1,7 +1,7 @@
  <%if @stream.guest_id == nil %>
  <h1>Test works!</h1>
  <%else%>
-<%byebug%>
+
  <%if current_user.id == @stream.guest_id %> 
  <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> </h1>
  <h2> Coins Spent: <%=@amount%> </h2>

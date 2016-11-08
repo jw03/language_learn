@@ -4,11 +4,15 @@
 <table class="table" id="learn">
 <tr>
 	<th>Users</th>
+	<th>Online?</th>
 </tr>	
 <% x.users.all.each do |y| %>
 <tr>
 	<td>
 		<%= y.id %> <%= y.first_name%> <%= y.last_name%>
+	</td>
+	<td>
+		<%= y.online? %>
 	</td>
 </tr>
 <% end %>
@@ -21,43 +25,17 @@
 <table class="table" id="teach">
 <tr>
 	<th>Users</th>
+		<th>Online?</th>
 </tr>	
 <% x.users.all.each do |y| %>
 <tr>
 	<td>
 		<%= y.id %> <%= y.first_name%> <%= y.last_name%>
 	</td>
+		<td>
+		<%= y.online? %>
+	</td>
 </tr>
 <% end %>
 </table>
 <% end %>
-
-
-
-
-
-
-
-
-<table class="table">
-	<tr>
-		<th>id</th>
-		<th>guest</th>
-		<th>host</th>
-		<th>amount</th>
-		<th>session</th>
-		<th>is_paid</th>
-	</tr>
-
-	<% @chats.each do |x| %>
-		<tr>
-			<td><%= x.id%></td>
-			<td><%= x.guest_id%></td>
-			<td><%= x.host_id%></td>
-			<td><%= x.amount%></td>
-			<td><%= x.chat_session%></td>
-			<td><%= x.is_paid%></td>
-		</tr>
-	<% end %>
-
-</table>

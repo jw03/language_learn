@@ -1,12 +1,13 @@
  <%if @stream.guest_id == nil %>
  <h1>Test works!</h1>
  <%else%>
- <%if current_user == @stream.guest_id %> 
- <h1> You have talked to <%=@earner %> for the last <%=@duration%> </h1>
+<%byebug%>
+ <%if current_user.id == @stream.guest_id %> 
+ <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> </h1>
  <h2> Coins Spent: <%=@amount%> </h2>
  <h2> Balance: <%=@spender.total_coins%> </h2>
  <%else%>
-<h1> You have talked to <%=@spender %> for the last <%=@duration%> </h1>
+<h1> You have talked to <%=@spender.first_name %> for the last <%=@duration%> </h1>
  <h2> Coins Earned: <%=@amount%> </h2>
 <h2> Balance: <%=@earner.total_coins%> </h2>
  <%end%>

@@ -30,15 +30,17 @@
                  <ol>
                    <% @chats_host.each do |x| %>
                      <% a = User.find(x.guest_id) %>
-                    <li><%= x.time_start%>, <%= a.first_name %> joined.  <span class="badge"><%= x.amount %></span> earned.</li>
+                      <% b = User.find(x.host_id) %>
+                    <li><%= x.time_start%>, <%= a.first_name %> joined <%= b.first_name %>'s room.  <%= b.first_name%> earned <span class="badge"><%= x.amount %></span>.</li>
                      <%= %>
                    <% end %>
                  </ol>
                 <strong><p>Chat you joined before:</p></strong>
                    <ol>
                    <% @chats_join.each do |x| %>
-                     <% a = User.find(x.guest_id) %>
-                    <li><%= x.time_start%>, <%= a.first_name %> joined.  <span class="badge"><%= x.amount %></span> paid.</li>
+                     <% a = User.find(x.host_id) %>
+                      <% b = User.find(x.guest_id) %>
+                     <li><%= x.time_start%>, <%= b.first_name %> joined <%= a.first_name %>'s room.  <%= a.first_name%> earned <span class="badge"><%= x.amount %></span>.</li>
                      <%= %>
                    <% end %>
                  </ol>

@@ -32,6 +32,8 @@
     </div>
     <%= yield %>
 
+  <% if request.original_url.match(/room/).nil? %>
+  
     <footer>
       <div class="container">
         <div class="col-sm-12">
@@ -72,6 +74,8 @@
       </div>
       </div>
       </footer>
+      <% else %>
+  <% end %> 
 
 
   </body>

@@ -1,15 +1,28 @@
- <div class="container">
-  <div class="panel-header">
-  <h3>Summary</h3>
-  </div>
-
- <%if current_user.id == @stream.guest_id %> 
- <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> seconds. </h1>
- <h2> Coins Spent: <%=@amount%> </h2>
- <h2> Balance: <%=@spender.total_coins%> </h2>
- <%elsif current_user.id == @stream.host_id%>
-<h1> You have talked to <%=@spender.first_name %> for the last <%=@duration%> </h1>
- <h2> Coins Earned: <%=@amount%> </h2>
-<h2> Balance: <%=@earner.total_coins%> </h2>
- <%end%>
+<div class="container padding-top--sm">
+	<div class="row">
+		<div class="col-xs-12">
+		  <div class="panel-header">
+		  	<h3>Chat summary</h3>
+		  </div>
+			<%if @stream.guest_id == nil %>
+				<h1>Test works!</h1>
+			<%else%>
+				<%if current_user.id == @stream.guest_id %> 
+					<div class="panel-main">
+						<h3>We hope you enjoyed your chat with <%=@earner.first_name %></h3>
+						<p>Call duartion: <%=@duration%></p>
+						<p>Coins spent: <span><%= image_tag("dollar", :class => "svg-small") %></span><%=@amount%> </p>
+						<p>Remaining balance: <%=@spender.total_coins%> </p>
+					</div>
+				<%elsif current_user.id == @stream.host_id%>
+					<div class="panel-main">
+						<h3>We hope you enjoyed your chat with <%=@spender.first_name %></h3>
+						<p>Call duartion: <%=@duration%></p>
+							<p>Coins earned: <%=@amount%> </p>
+						<p>New balance: <%=@earner.total_coins%></p>
+					</div>
+				<%end%>
+			<%end%>
+		</div>
+ 	</div>
 </div>

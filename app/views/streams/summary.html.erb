@@ -11,7 +11,7 @@
 					<div class="panel-main">
 						<h3>We hope you enjoyed your chat with <%=@earner.first_name %></h3>
 						<p>Call duartion: <%=@duration%></p>
-						<p>Coins spent: <span><%= image_tag("coins-money-stack", :class => "svg-small") %></span><%=@amount%> </p>
+						<p>Coins spent: <span><%= image_tag("dollar", :class => "svg-small") %></span><%=@amount%> </p>
 						<p>Remaining balance: <%=@spender.total_coins%> </p>
 					</div>
 				<%else%>

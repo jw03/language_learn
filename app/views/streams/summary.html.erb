@@ -5,21 +5,23 @@
 		  	<h3>Chat summary</h3>
 		  </div>
 			<%if @stream.guest_id == nil %>
-				<h1>Test works!</h1>
+				<div class="panel-main">
+					<p>You ended the call before a guest joined your chat. You can return to the homepage and host a call again, or speak with someone to practice your skills.</p>
+				</div>
 			<%else%>
 				<%if current_user.id == @stream.guest_id %> 
 					<div class="panel-main">
-						<h3>We hope you enjoyed your chat with <%=@earner.first_name %></h3>
-						<p>Call duartion: <%=@duration%></p>
-						<p>Coins spent: <span><%= image_tag("dollar", :class => "svg-small") %></span><%=@amount%> </p>
-						<p>Remaining balance: <%=@spender.total_coins%> </p>
+						<h4>We hope you enjoyed your chat with <%=@earner.first_name %></h4>
+						<p>Call duartion: <%=@duration%> seconds</p>
+						<p>Coins spent: <span><%= image_tag("dollar", :class => "svg-small") %></span><span> <%=@amount%></span></p>
+						<p>Remaining balance: <span><%= image_tag("dollar", :class => "svg-small") %></span><span> <%=@spender.total_coins%></span></p>
 					</div>
 				<%elsif current_user.id == @stream.host_id%>
 					<div class="panel-main">
 						<h3>We hope you enjoyed your chat with <%=@spender.first_name %></h3>
-						<p>Call duartion: <%=@duration%></p>
-							<p>Coins earned: <%=@amount%> </p>
-						<p>New balance: <%=@earner.total_coins%></p>
+						<p>Call duartion: <%=@duration%> seconds</p>
+						<p>Coins earned: <span><%= image_tag("dollar", :class => "svg-small") %></span><span> <%=@amount%></span></p>
+						<p>New balance: <span><%= image_tag("dollar", :class => "svg-small") %></span><span> <%=@earner.total_coins%></span></p>
 					</div>
 				<%end%>
 			<%end%>

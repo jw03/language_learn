@@ -334,8 +334,12 @@ label {
 }
 
 .svg-small {
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
+}
+
+.light {
+	font-weight: normal;
 }
 
 @media (min-width: 768px) {

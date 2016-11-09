@@ -11,9 +11,9 @@
 </div>
 
 <%= radio_button("user", "gender", "Male") %>
-<%= label_tag(:gender, "Male") %>
+<%= label_tag(:gender, "Male", :class => "light") %>
 <%= radio_button("user", "gender", "Female") %>
-<%= label_tag(:gender, "Female") %>
+<%= label_tag(:gender, "Female", :class => "light") %>
 
 <div class="text-field">
   <%= form.number_field :age, type: 'integer', placeholder: "Age", :class => "input-full-width" %>

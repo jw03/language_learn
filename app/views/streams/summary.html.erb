@@ -3,18 +3,13 @@
   <h3>Summary</h3>
   </div>
 
- <%if @stream.guest_id == nil %>
- <h1>Test works!</h1>
- <%else%>
-
  <%if current_user.id == @stream.guest_id %> 
- <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> </h1>
+ <h1> You have talked to <%=@earner.first_name %> for the last <%=@duration%> seconds. </h1>
  <h2> Coins Spent: <%=@amount%> </h2>
  <h2> Balance: <%=@spender.total_coins%> </h2>
- <%else%>
+ <%elsif current_user.id == @stream.host_id%>
 <h1> You have talked to <%=@spender.first_name %> for the last <%=@duration%> </h1>
  <h2> Coins Earned: <%=@amount%> </h2>
 <h2> Balance: <%=@earner.total_coins%> </h2>
- <%end%>
  <%end%>
 </div>

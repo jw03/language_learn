@@ -20,6 +20,29 @@
                 <%= render template: 'users/edit' %>
               </div>
             </div>
+            <div class="tab-pane" id="conversations">
+              <div class="panel-header">
+                <h3>Conversation history</h3>
+              </div>
+              <div class="panel-main">
+               <strong><p>Chat you hosted before: </p></strong>
+                 <ol>
+                   <% @chats_host.each do |x| %>
+                     <% a = User.find(x.guest_id) %>
+                    <li><%= x.time_start%>, <%= a.first_name %> joined.  <span class="badge"><%= x.amount %></span> earned.</li>
+                     <%= %>
+                   <% end %>
+                 </ol>
+                <strong><p>Chat you joined before:</p></strong>
+                   <ol>
+                   <% @chats_join.each do |x| %>
+                     <% a = User.find(x.guest_id) %>
+                    <li><%= x.time_start%>, <%= a.first_name %> joined.  <span class="badge"><%= x.amount %></span> paid.</li>
+                     <%= %>
+                   <% end %>
+                 </ol>
+              </div>
+            </div>
             <div class="tab-pane" id="languages-and-interests">
               <div class="panel-header">
                 <h3>Languages and interests</h3>
